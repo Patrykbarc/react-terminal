@@ -1,7 +1,7 @@
-import './App.css'
+import { TerminalContainer } from './components/TerminalContainer/TerminalContainer'
 
 function App() {
-	return <p>hello world!</p>
+	return <TerminalContainer />
 }
 
 export default App
