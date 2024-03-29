@@ -6,16 +6,81 @@ const chatList: string[] = [
 	'/home/user/',
 ]
 
+interface Commands {
+	cmd: string
+	value?: string
+	response?: string
+}
+
+const commandsList: Commands[] = [
+	{
+		cmd: 'ls',
+		response: 'List of commands:',
+	},
+	{
+		cmd: 'clear',
+	},
+	{
+		cmd: 'about',
+	},
+	{
+		cmd: 'skills',
+	},
+	{
+		cmd: 'education',
+	},
+	{
+		cmd: 'projects',
+	},
+	{
+		cmd: 'contact',
+	},
+	{
+		cmd: 'github',
+	},
+	{
+		cmd: 'linkedin',
+	},
+	{
+		cmd: 'blog',
+	},
+	{
+		cmd: 'help',
+	},
+]
+
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
 	const [chat, setChat] = useState<string[]>(chatList)
 	const messagesEndRef = useRef<HTMLDivElement>(null)
 
 	function handleSetChat(event: React.KeyboardEvent<HTMLInputElement>) {
-		if (event.key === 'Enter') {
+		if (event.key === 'Enter' && input.trim().length > 0) {
 			setChat(prevState => [...prevState, input])
+
+			handleCommandResponse(input)
 			setInput('')
 		}
+	}
+
+	function handleCommandResponse(cmd: string) {
+		setTimeout(() => {
+			switch (cmd) {
+				case 'clear':
+					setChat([])
+					break
+				case 'ls':
+					setChat(prevState => [
+						...prevState,
+						'List of avilable commands: ',
+						commandsList.map(c => c.cmd + '    ').join(''),
+					])
+					break
+				default:
+					setChat(prevState => [...prevState, 'Terminal: command not found'])
+					break
+			}
+		}, 150)
 	}
 
 	useEffect(() => {
@@ -42,6 +107,7 @@ export function TerminalContainer() {
 						value={input}
 						onChange={e => setInput(e.target.value)}
 						onKeyUp={handleSetChat}
+						// disabled={input.trim().length === 0}
 					/>
 				</div>
 			</div>
