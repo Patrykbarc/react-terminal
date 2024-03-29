@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { commandsList } from '../../utils/constants'
 
 const chatList: string[] = [
 	'Hello world, welcome to my own terminal [Version 1.0]',
@@ -6,58 +7,15 @@ const chatList: string[] = [
 	'/home/user/',
 ]
 
-interface Commands {
-	cmd: string
-	value?: string
-	response?: string
-}
-
-const commandsList: Commands[] = [
-	{
-		cmd: 'ls',
-		response: 'List of commands:',
-	},
-	{
-		cmd: 'clear',
-	},
-	{
-		cmd: 'about',
-	},
-	{
-		cmd: 'skills',
-	},
-	{
-		cmd: 'education',
-	},
-	{
-		cmd: 'projects',
-	},
-	{
-		cmd: 'contact',
-	},
-	{
-		cmd: 'github',
-	},
-	{
-		cmd: 'linkedin',
-	},
-	{
-		cmd: 'blog',
-	},
-	{
-		cmd: 'help',
-	},
-]
-
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
+	const [inputHistory, setInputHistory] = useState<string[]>([])
 	const [chat, setChat] = useState<string[]>(chatList)
 	const messagesEndRef = useRef<HTMLDivElement>(null)
-
 	function handleSetChat(event: React.KeyboardEvent<HTMLInputElement>) {
 		if (event.key === 'Enter' && input.trim().length > 0) {
-			setChat(prevState => [...prevState, input])
-
+			setChat(prevState => [...prevState, '$ ' + input])
+			setInputHistory(prevState => [...prevState, input])
 			handleCommandResponse(input)
 			setInput('')
 		}
@@ -73,7 +31,7 @@ export function TerminalContainer() {
 					setChat(prevState => [
 						...prevState,
 						'List of avilable commands: ',
-						commandsList.map(c => c.cmd + '    ').join(''),
+						commandsList.map(c => c.cmd + '  |  ').join(''),
 					])
 					break
 				default:
@@ -95,9 +53,21 @@ export function TerminalContainer() {
 				<div className='flex h-full flex-col justify-between text-sm font-semibold'>
 					<div
 						ref={messagesEndRef}
-						className='flex h-full flex-col gap-1 overflow-y-scroll px-3 pt-2'>
-						{chat.map((c, index) => {
+						className='overflow-y-scrol flex h-full flex-col gap-1 break-words px-3 pt-2'>
+						{/* {chat.map((c, index) => {
 							return <p key={index}>{c}</p>
+						})} */}
+
+						{chat.map((c, index) => {
+							const containsDollarSign = c.includes('$')
+
+							return (
+								<p
+									key={index}
+									className={`${containsDollarSign ? 'text-neutral-800' : 'text-violet-500'}`}>
+									{c.replace('$', '')}
+								</p>
+							)
 						})}
 					</div>
 					<input
@@ -107,7 +77,6 @@ export function TerminalContainer() {
 						value={input}
 						onChange={e => setInput(e.target.value)}
 						onKeyUp={handleSetChat}
-						// disabled={input.trim().length === 0}
 					/>
 				</div>
 			</div>
