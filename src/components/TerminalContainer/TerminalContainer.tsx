@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { commandsList } from '../../utils/constants/commandsList'
 import { chatList } from '../../utils/constants/chatList'
 import { ChatItem } from '../../utils/interfaces'
+import { CommandsList } from '../CommandsList/CommandsList'
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
@@ -17,6 +17,10 @@ export function TerminalContainer() {
 		}
 	}
 
+	function handleSetInput(value: string) {
+		setInput(value)
+	}
+
 	function handleCommandResponse(cmd: string) {
 		setTimeout(() => {
 			let response: string | JSX.Element = 'Terminal: command not found'
@@ -25,7 +29,7 @@ export function TerminalContainer() {
 					setChat([])
 					return
 				case 'ls':
-					response = 'List of available commands: ' + commandsList.map(c => c.cmd).join(' | ')
+					response = <CommandsList handleSetInput={handleSetInput} />
 					break
 				case 'github':
 					response = (
@@ -64,11 +68,12 @@ export function TerminalContainer() {
 						{chat.map((item, index) => (
 							<p
 								key={item.id + index}
-								className={
-									typeof item.content === 'string' && item.content.includes('$')
-										? 'text-neutral-800'
-										: 'text-sky-700'
-								}>
+								// className={
+								// 	typeof item.content === 'string' && item.content.includes('$')
+								// 		? 'text-neutral-800'
+								// 		: 'text-sky-700'
+								// }
+							>
 								{item.content}
 							</p>
 						))}
