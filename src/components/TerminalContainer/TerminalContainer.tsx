@@ -1,21 +1,36 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { commandsList } from '../../utils/constants'
+import { commandsList } from '../../utils/constants/commandsList'
 
-const chatList: string[] = [
-	'Hello world, welcome to my own terminal [Version 1.0]',
-	'© Patryk Barć. All rights reserved.',
-	'/home/user/',
+interface ChatItem {
+	id: number
+	content: string | React.ReactNode
+}
+
+const chatList: ChatItem[] = [
+	{
+		id: 1,
+		content: 'Hello world, welcome to my own terminal [Version 1.0]',
+	},
+	{
+		id: 2,
+		content: '© Patryk Barć. All rights reserved.',
+	},
+	{
+		id: 3,
+		content: 'Type "ls" to show list of available commands',
+	},
 ]
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
-	const [inputHistory, setInputHistory] = useState<string[]>([])
-	const [chat, setChat] = useState<string[]>(chatList)
+	// const [inputHistory, setInputHistory] = useState<string[]>([])
+	const [chat, setChat] = useState<ChatItem[]>(chatList)
 	const messagesEndRef = useRef<HTMLDivElement>(null)
+
 	function handleSetChat(event: React.KeyboardEvent<HTMLInputElement>) {
 		if (event.key === 'Enter' && input.trim().length > 0) {
-			setChat(prevState => [...prevState, '$ ' + input])
-			setInputHistory(prevState => [...prevState, input])
+			setChat(prevState => [...prevState, { id: prevState.length + 1, content: '$ ' + input }])
+			// setInputHistory(prevState => [...prevState, input])
 			handleCommandResponse(input)
 			setInput('')
 		}
@@ -30,12 +45,31 @@ export function TerminalContainer() {
 				case 'ls':
 					setChat(prevState => [
 						...prevState,
-						'List of avilable commands: ',
-						commandsList.map(c => c.cmd + '  |  ').join(''),
+						{
+							id: prevState.length + 1,
+							content:
+								'List of avilable commands: ' + commandsList.map(c => c.cmd + '  |  ').join(''),
+						},
+					])
+					break
+				case 'github':
+					setChat(prevState => [
+						...prevState,
+						{
+							id: prevState.length + 1,
+							content: (
+								<a href='https://github.com/Patrykbarc' target='_blank'>
+									https://github.com/Patrykbarc
+								</a>
+							),
+						},
 					])
 					break
 				default:
-					setChat(prevState => [...prevState, 'Terminal: command not found'])
+					setChat(prevState => [
+						...prevState,
+						{ id: prevState.length + 1, content: 'Terminal: command not found' },
+					])
 					break
 			}
 		}, 150)
@@ -53,19 +87,17 @@ export function TerminalContainer() {
 				<div className='flex h-full flex-col justify-between text-sm font-semibold'>
 					<div
 						ref={messagesEndRef}
-						className='overflow-y-scrol flex h-full flex-col gap-1 break-words px-3 pt-2'>
-						{/* {chat.map((c, index) => {
-							return <p key={index}>{c}</p>
-						})} */}
-
-						{chat.map((c, index) => {
-							const containsDollarSign = c.includes('$')
+						className='flex h-full flex-col gap-1 overflow-y-scroll break-words px-3 py-2'>
+						{chat.map(item => {
+							let containsDollarSign
+							typeof item.content === 'string' && (containsDollarSign = item.content.includes('$'))
 
 							return (
 								<p
-									key={index}
+									key={item.id}
 									className={`${containsDollarSign ? 'text-neutral-800' : 'text-violet-500'}`}>
-									{c.replace('$', '')}
+									{/* {item.content.replace('$', '')} */}
+									{item.content}
 								</p>
 							)
 						})}

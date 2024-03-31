@@ -1,9 +1,8 @@
-import { Commands } from './interfaces'
+import { Commands } from '../interfaces'
 
 export const commandsList: Commands[] = [
 	{
 		cmd: 'ls',
-		response: 'List of commands:',
 	},
 	{
 		cmd: 'clear',
