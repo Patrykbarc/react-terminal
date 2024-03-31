@@ -5,9 +5,6 @@ export const commandsList: Commands[] = [
 		cmd: 'ls',
 	},
 	{
-		cmd: 'clear',
-	},
-	{
 		cmd: 'about',
 	},
 	{
@@ -33,5 +30,8 @@ export const commandsList: Commands[] = [
 	},
 	{
 		cmd: 'help',
+	},
+	{
+		cmd: 'clear',
 	},
 ]

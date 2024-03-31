@@ -1,9 +1,29 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { chatList } from '../../utils/constants/chatList'
+
 import { ChatItem } from '../../utils/interfaces'
 import { CommandsList } from '../CommandsList/CommandsList'
+import { Button } from '../Button/Button'
 
 export function TerminalContainer() {
+	const chatList: ChatItem[] = [
+		{
+			id: 1,
+			content: 'Hello world, welcome to my own terminal [Version 1.0]',
+		},
+		{
+			id: 2,
+			content: '© Patryk Barć. All rights reserved.',
+		},
+		{
+			id: 3,
+			content: (
+				<span>
+					Type <Button onClick={() => setInput('ls')}>ls</Button> to show list of available commands
+				</span>
+			),
+		},
+	]
+
 	const [input, setInput] = useState('')
 	const [chat, setChat] = useState<ChatItem[]>(chatList)
 	const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -23,13 +43,34 @@ export function TerminalContainer() {
 
 	function handleCommandResponse(cmd: string) {
 		setTimeout(() => {
-			let response: string | JSX.Element = 'Terminal: command not found'
+			let response: string | JSX.Element = (
+				<span className='text-rose-600'>Terminal: command not found</span>
+			)
 			switch (cmd) {
 				case 'clear':
 					setChat([])
 					return
 				case 'ls':
 					response = <CommandsList handleSetInput={handleSetInput} />
+					break
+				case 'about':
+					response = (
+						<div className='flex flex-col gap-3'>
+							<span>
+								I'm Patryk Barć, a frontend developer and graphic designer based in Rzeszów, Poland.
+								I have a passion for web development. With 1 year of commercial experience,
+							</span>
+							<span>
+								I've worked on a variety of projects, from small business websites to an internal
+								company management system.
+							</span>
+							<span>
+								To show my list of skills type{' '}
+								<Button onClick={() => setInput('skills')}>skills</Button> command.
+							</span>
+							<span>Feel free to explore more about me through other commands!</span>
+						</div>
+					)
 					break
 				case 'github':
 					response = (
@@ -59,14 +100,14 @@ export function TerminalContainer() {
 	}, [chat])
 
 	return (
-		<div className='relative size-full max-h-[1024px] min-h-72 min-w-72 max-w-screen-lg resize overflow-hidden rounded-b-xl border border-gray-400 caret-gray-600'>
+		<div className='relative size-full max-h-[1024px] min-h-72 w-[400px] min-w-72 max-w-screen-lg resize overflow-hidden rounded-b-xl border border-gray-400 caret-gray-600'>
 			<div className='absolute z-0 size-full'>
 				<div className='flex h-full flex-col justify-between text-sm font-semibold'>
 					<div
 						ref={messagesEndRef}
 						className='flex h-full flex-col gap-1 overflow-y-scroll break-words px-3 py-2'>
 						{chat.map((item, index) => (
-							<p
+							<span
 								key={item.id + index}
 								// className={
 								// 	typeof item.content === 'string' && item.content.includes('$')
@@ -75,7 +116,7 @@ export function TerminalContainer() {
 								// }
 							>
 								{item.content}
-							</p>
+							</span>
 						))}
 					</div>
 					<input
