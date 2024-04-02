@@ -16,6 +16,7 @@ export function TerminalContainer() {
 		},
 	])
 	const messagesEndRef = useRef<HTMLDivElement>(null)
+	const inputRef = useRef<HTMLInputElement>(null)
 
 	function handleSetChat(event: React.KeyboardEvent<HTMLInputElement>) {
 		if (event.key === 'Enter' && input.trim().length > 0) {
@@ -57,6 +58,10 @@ export function TerminalContainer() {
 		if (messagesEndRef.current) {
 			messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight
 		}
+
+		messagesEndRef.current?.addEventListener('click', () => {
+			inputRef.current !== null && inputRef.current.focus()
+		})
 	}, [chat])
 
 	return (
@@ -80,6 +85,7 @@ export function TerminalContainer() {
 						))}
 					</div>
 					<input
+						ref={inputRef}
 						placeholder='Type command'
 						className='bottom-0 z-50 w-full border-t border-gray-200 bg-transparent px-3 py-2 focus-visible:outline-none'
 						type='text'
