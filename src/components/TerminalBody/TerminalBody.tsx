@@ -1,31 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import { ChatItem } from '../../utils/interfaces'
-import { CommandsList } from '../CommandsList/CommandsList'
-import { Button } from '../Button/Button'
+import { Ls } from '../Outputs/Ls'
+import { About } from '../Outputs/About'
+import { Github } from '../Outputs/Github'
+import { Secret } from '../Outputs/Secret'
+import { InitialMessage } from '../Outputs/InitialMessage'
 
 export function TerminalContainer() {
-	const chatList: ChatItem[] = [
+	const [input, setInput] = useState('')
+	const [chat, setChat] = useState<ChatItem[]>([
 		{
 			id: 1,
-			content: 'Hello world, welcome to my own terminal [Version 1.0]',
+			content: <InitialMessage setInput={setInput} />,
 		},
-		{
-			id: 2,
-			content: '© Patryk Barć. All rights reserved.',
-		},
-		{
-			id: 3,
-			content: (
-				<span>
-					Type <Button onClick={() => setInput('ls')}>ls</Button> to show list of available commands
-				</span>
-			),
-		},
-	]
-
-	const [input, setInput] = useState('')
-	const [chat, setChat] = useState<ChatItem[]>(chatList)
+	])
 	const messagesEndRef = useRef<HTMLDivElement>(null)
 
 	function handleSetChat(event: React.KeyboardEvent<HTMLInputElement>) {
@@ -35,10 +24,6 @@ export function TerminalContainer() {
 			handleCommandResponse(input)
 			setInput('')
 		}
-	}
-
-	function handleSetInput(value: string) {
-		setInput(value)
 	}
 
 	function handleCommandResponse(cmd: string) {
@@ -51,41 +36,16 @@ export function TerminalContainer() {
 					setChat([])
 					return
 				case 'ls':
-					response = <CommandsList handleSetInput={handleSetInput} />
+					response = <Ls setInput={setInput} />
 					break
 				case 'about':
-					response = (
-						<div className='flex flex-col gap-3'>
-							<span>
-								I'm Patryk Barć, a frontend developer and graphic designer based in Rzeszów, Poland.
-								I have a passion for web development. With 1 year of commercial experience,
-							</span>
-							<span>
-								I've worked on a variety of projects, from small business websites to an internal
-								company management system.
-							</span>
-							<span>
-								To show my list of skills type{' '}
-								<Button onClick={() => setInput('skills')}>skills</Button> command.
-							</span>
-							<span>Feel free to explore more about me through other commands!</span>
-						</div>
-					)
+					response = <About setInput={setInput} />
 					break
 				case 'github':
-					response = (
-						<a href='https://github.com/Patrykbarc' target='_blank' className='underline'>
-							https://github.com/Patrykbarc
-						</a>
-					)
+					response = <Github />
 					break
 				case 'secret':
-					response = (
-						<img
-							className='size-[150px]'
-							src='https://media1.tenor.com/m/x8v1oNUOmg4AAAAd/rickroll-roll.gif'
-						/>
-					)
+					response = <Secret />
 					break
 			}
 			const newChatItem: ChatItem = { id: chat.length + 1, content: response }

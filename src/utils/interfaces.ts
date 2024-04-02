@@ -1,3 +1,5 @@
+import { Dispatch } from 'react'
+
 export interface Commands {
 	cmd: string
 	value?: string
@@ -6,5 +8,9 @@ export interface Commands {
 
 export interface ChatItem {
 	id: number
-	content: string | React.ReactNode
+	content: string | React.ReactNode | JSX.Element
+}
+
+export interface SetStateProps<T> {
+	setInput: Dispatch<React.SetStateAction<T>>
 }

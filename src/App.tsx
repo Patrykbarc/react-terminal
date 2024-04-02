@@ -1,4 +1,4 @@
-import { TerminalContainer } from './components/TerminalContainer/TerminalContainer'
+import { TerminalContainer } from './components/TerminalBody/TerminalBody'
 import { TerminalHeader } from './components/TerminalHeader/TerminalHeader'
 
 function App() {
