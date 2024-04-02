@@ -35,3 +35,16 @@ export const commandsList: Commands[] = [
 		cmd: 'clear',
 	},
 ]
+export const commandsListArray: string[] = [
+	'ls',
+	'about',
+	'skills',
+	'education',
+	'projects',
+	'contact',
+	'github',
+	'linkedin',
+	'blog',
+	'help',
+	'clear',
+]

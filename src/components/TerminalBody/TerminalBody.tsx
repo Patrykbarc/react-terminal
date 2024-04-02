@@ -6,6 +6,9 @@ import { About } from '../Outputs/About'
 import { Github } from '../Outputs/Github'
 import { Secret } from '../Outputs/Secret'
 import { InitialMessage } from '../Outputs/InitialMessage'
+import { commandsListArray } from '../../utils/constants/commandsList'
+import { closest } from 'fastest-levenshtein'
+import { Button } from '../Button/Button'
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
@@ -29,8 +32,17 @@ export function TerminalContainer() {
 
 	function handleCommandResponse(cmd: string) {
 		setTimeout(() => {
+			const closestCommand = closest(cmd, commandsListArray)
 			let response: string | JSX.Element = (
-				<span className='text-rose-600'>Terminal: command not found</span>
+				<>
+					<span className='text-rose-600'>Terminal: command not found.</span>
+					<br />
+					<span className='text-rose-600'>
+						{' '}
+						Did you mean{' '}
+						{<Button onClick={() => setInput(closestCommand)}>{closestCommand}</Button>} ?
+					</span>
+				</>
 			)
 			switch (cmd) {
 				case 'clear':
@@ -65,7 +77,7 @@ export function TerminalContainer() {
 	}, [chat])
 
 	return (
-		<div className='relative size-full max-h-[1024px] min-h-72 w-[400px] min-w-72 max-w-screen-lg resize overflow-hidden rounded-b-xl border border-gray-400 caret-gray-600'>
+		<div className='relative size-full max-h-[1024px] min-h-72 w-[400px] min-w-72 max-w-screen-lg resize overflow-hidden rounded-b-xl border border-gray-400 caret-gray-600 shadow-2xl'>
 			<div className='absolute z-0 size-full'>
 				<div className='flex h-full flex-col justify-between text-sm font-semibold'>
 					<div
