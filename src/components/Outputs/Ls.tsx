@@ -2,6 +2,7 @@ import { Fragment } from 'react/jsx-runtime'
 import { commandsList } from '../../utils/constants/commandsList'
 import { Button } from '../Button/Button'
 import { SetStateProps } from '../../utils/interfaces'
+import { ButtonsWrapper } from '../ButtonsWrapper/ButtonsWrapper'
 
 // interface HandleSetInput {
 // 	handleSetInput: (value: string) => void
@@ -9,7 +10,7 @@ import { SetStateProps } from '../../utils/interfaces'
 
 export function Ls({ setInput }: SetStateProps<string>) {
 	return (
-		<span className='flex flex-wrap gap-1'>
+		<ButtonsWrapper>
 			Available commands:
 			{commandsList.map(c => {
 				return (
@@ -20,6 +21,6 @@ export function Ls({ setInput }: SetStateProps<string>) {
 					</Fragment>
 				)
 			})}
-		</span>
+		</ButtonsWrapper>
 	)
 }

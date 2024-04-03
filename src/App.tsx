@@ -4,7 +4,7 @@ import { TerminalHeader } from './components/TerminalHeader/TerminalHeader'
 function App() {
 	return (
 		<div className='flex h-screen items-center justify-center'>
-			<div>
+			<div className='scale-125'>
 				<TerminalHeader />
 				<TerminalContainer />
 			</div>

@@ -11,7 +11,7 @@ export const commandsList: Commands[] = [
 		cmd: 'skills',
 	},
 	{
-		cmd: 'education',
+		cmd: 'experience',
 	},
 	{
 		cmd: 'projects',

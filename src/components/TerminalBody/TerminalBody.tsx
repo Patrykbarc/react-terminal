@@ -9,6 +9,8 @@ import { InitialMessage } from '../Outputs/InitialMessage'
 import { commandsListArray } from '../../utils/constants/commandsList'
 import { closest } from 'fastest-levenshtein'
 import { Button } from '../Button/Button'
+import { Skills } from '../Outputs/Skills'
+import { Experience } from '../Outputs/Experience'
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
@@ -35,7 +37,7 @@ export function TerminalContainer() {
 			const closestCommand = closest(cmd, commandsListArray)
 			let response: string | JSX.Element = (
 				<>
-					<span className='text-rose-600'>Terminal: command not found.</span>
+					<span className='text-rose-600'>Command not found.</span>
 					<br />
 					<span className='text-rose-600'>
 						{' '}
@@ -53,6 +55,12 @@ export function TerminalContainer() {
 					break
 				case 'about':
 					response = <About setInput={setInput} />
+					break
+				case 'skills':
+					response = <Skills setInput={setInput} />
+					break
+				case 'experience':
+					response = <Experience setInput={setInput} />
 					break
 				case 'github':
 					response = <Github />
@@ -79,22 +87,29 @@ export function TerminalContainer() {
 	return (
 		<div className='relative size-full max-h-[1024px] min-h-72 w-[400px] min-w-72 max-w-screen-lg resize overflow-hidden rounded-b-xl border border-gray-400 caret-gray-600 shadow-2xl'>
 			<div className='absolute z-0 size-full'>
-				<div className='flex h-full flex-col justify-between text-sm font-semibold'>
+				<div className='flex h-full flex-col justify-between text-balance text-sm font-semibold'>
 					<div
 						ref={messagesEndRef}
 						className='flex h-full flex-col gap-1 overflow-y-scroll break-words px-3 py-2'>
-						{chat.map((item, index) => (
-							<span
-								key={item.id + index}
-								// className={
-								// 	typeof item.content === 'string' && item.content.includes('$')
-								// 		? 'text-neutral-800'
-								// 		: 'text-sky-700'
-								// }
-							>
-								{item.content}
-							</span>
-						))}
+						{chat.map((item, index) => {
+							const lastIndex = chat.length - 1
+							const isLastIndex = index === lastIndex
+
+							return (
+								<span
+									key={item.id + index}
+									// className={
+									//     typeof item.content === 'string' && item.content.includes('$')
+									//         ? 'text-neutral-800'
+									//         : 'text-sky-700'
+									// }
+								>
+									{item.content}
+
+									{!isLastIndex && <hr data-index={index} className='my-1 opacity-50' />}
+								</span>
+							)
+						})}
 					</div>
 					<input
 						ref={inputRef}
