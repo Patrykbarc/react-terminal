@@ -11,6 +11,7 @@ import { closest } from 'fastest-levenshtein'
 import { Button } from '../Button/Button'
 import { Skills } from '../Outputs/Skills'
 import { Experience } from '../Outputs/Experience'
+import { Help } from '../Outputs/Help'
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
@@ -52,6 +53,9 @@ export function TerminalContainer() {
 					return
 				case 'ls':
 					response = <Ls setInput={setInput} />
+					break
+				case 'help':
+					response = <Help setInput={setInput} />
 					break
 				case 'about':
 					response = <About setInput={setInput} />

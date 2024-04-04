@@ -9,6 +9,10 @@ export function InitialMessage({ setInput }: SetStateProps<string>) {
 			<span>
 				Type <Button onClick={() => setInput('ls')}>ls</Button> to show list of available commands
 			</span>
+			<span>
+				If you want to check the description of each command type{' '}
+				<Button onClick={() => setInput('help')}>help</Button>
+			</span>
 		</div>
 	)
 }

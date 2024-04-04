@@ -2,8 +2,7 @@ import { Dispatch } from 'react'
 
 export interface Commands {
 	cmd: string
-	value?: string
-	response?: string
+	description: string
 }
 
 export interface ChatItem {
