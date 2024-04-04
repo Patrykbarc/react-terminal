@@ -35,6 +35,7 @@ export function TerminalContainer() {
 		}
 	}
 
+	// TODO przenieść handleCommandResponse do useReducer
 	function handleCommandResponse(cmd: string) {
 		setTimeout(() => {
 			const closestCommand = closest(cmd, commandsListArray)
@@ -90,9 +91,8 @@ export function TerminalContainer() {
 			inputRef.current !== null && inputRef.current.focus()
 		})
 	}, [chat])
-
 	return (
-		<div className='relative size-full max-h-[1024px] min-h-72 w-[400px] min-w-72 max-w-screen-lg resize overflow-hidden rounded-b-xl border border-gray-400 caret-gray-600 shadow-2xl'>
+		<div className='relative size-full max-h-[1024px] min-h-72 min-w-[70vw] max-w-screen-lg resize-y overflow-hidden rounded-b-xl border border-gray-400 caret-gray-600 shadow-2xl md:min-w-[500px] lg:w-[700px] lg:min-w-72 lg:resize'>
 			<div className='absolute z-0 size-full'>
 				<div className='flex h-full flex-col justify-between text-balance text-sm font-semibold'>
 					<div
