@@ -25,10 +25,12 @@ export function TerminalContainer() {
 	const inputRef = useRef<HTMLInputElement>(null)
 
 	function handleSetChat(event: React.KeyboardEvent<HTMLInputElement>) {
-		if (event.key === 'Enter' && input.trim().length > 0) {
-			const newChatItem: ChatItem = { id: chat.length + 1, content: '$ ' + input }
+		const formattedInput = input.trim().toLowerCase()
+
+		if (event.key === 'Enter' && formattedInput.length > 0) {
+			const newChatItem: ChatItem = { id: chat.length + 1, content: `$ ${formattedInput}` }
 			setChat(prevState => [...prevState, newChatItem])
-			handleCommandResponse(input)
+			handleCommandResponse(formattedInput)
 			setInput('')
 		}
 	}
@@ -36,7 +38,7 @@ export function TerminalContainer() {
 	function handleCommandResponse(cmd: string) {
 		setTimeout(() => {
 			const closestCommand = closest(cmd, commandsListArray)
-			let response: string | JSX.Element = (
+			let response: string | JSX.Element | null = (
 				<>
 					<span className='text-rose-600'>Command not found.</span>
 					<br />
@@ -49,8 +51,9 @@ export function TerminalContainer() {
 			)
 			switch (cmd) {
 				case 'clear':
+					response = null
 					setChat([])
-					return
+					break
 				case 'ls':
 					response = <Ls setInput={setInput} />
 					break
