@@ -1,14 +1,23 @@
 import { daysMapping } from '../constants/daysListMapping'
 import { monthsMapping } from '../constants/monthsMapping'
 
-const date = new Date()
-const day = date.getDay()
-const month = date.getMonth()
-const year = date.getFullYear()
-// const hours = date.getHours()
-// const minutes = date.getMinutes()
-// const seconds = date.getSeconds()
+export const getActualTime = () => {
+	const date = new Date()
+	const day = date.getDay()
+	const month = date.getMonth() + 1
+	const year = date.getFullYear()
+	const hours = date.getHours()
+	const minutes = date.getMinutes()
+	const seconds = date.getSeconds()
 
-export const actualTime = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+	const actualDate = `Today is ${daysMapping[day]}, ${monthsMapping[month]} ${year}`
+	const actualTime = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}`
 
-export const actualDate = `Today is ${daysMapping[day]}, ${monthsMapping[month]} ${year}`
+	return { actualDate, actualTime }
+}
+
+const formatTime = (time: number) => {
+	const formattedTime = time < 10 ? `0${time}` : time
+
+	return formattedTime
+}

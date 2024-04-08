@@ -1,8 +1,10 @@
-import { actualDate, actualTime } from '../../utils/functions/getDates'
+import { getActualTime } from '../../utils/functions/getDates'
 import { SetStateProps } from '../../utils/interfaces'
 import { Button } from '../Button/Button'
 
 export function InitialMessage({ setInput }: SetStateProps<string>) {
+	const { actualDate, actualTime } = getActualTime()
+
 	return (
 		<div className='flex flex-col gap-2'>
 			<div className='flex justify-between'>

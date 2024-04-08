@@ -13,6 +13,7 @@ import { List } from '../Outputs/List'
 import { Secret } from '../Outputs/Secret'
 import { Skills } from '../Outputs/Skills'
 import { TerminalBodyWrapper } from '../TerminalBodyWrapper/TerminalBodyWrapper'
+import { getActualTime } from '../../utils/functions/getDates'
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
@@ -25,24 +26,22 @@ export function TerminalContainer() {
 
 	const messagesEndRef = useRef<HTMLDivElement>(null)
 	const inputRef = useRef<HTMLInputElement>(null)
+	const { actualTime } = getActualTime()
 
 	function handleSetChat(event: React.KeyboardEvent<HTMLInputElement>) {
 		const formattedInput = input.trim().toLowerCase()
 
 		if (event.key === 'Enter' && formattedInput.length > 0) {
-			const date = new Date()
-			const hours = date.getHours()
-			const minutes = date.getMinutes()
-			const seconds = date.getSeconds()
-
-			const actualTime = `${hours}:${minutes}:${seconds}`
-
 			const newChatItem: ChatItem = {
 				id: Date.now(),
 				content: (
-					<div className='flex justify-between'>
-						<span> $ {formattedInput}</span>
-						<small>{actualTime}</small>
+					<div className='flex w-full justify-between  text-white'>
+						<div className='flex '>
+							<span className='block w-fit bg-green-700 px-2'>/patrykbarc</span>
+							<span className='block w-fit bg-sky-700 px-2'>/portfolio</span>
+							<span className='bg-neutral-900 px-2 '>$ {formattedInput}</span>
+						</div>
+						<small className='text-neutral-900'>{actualTime}</small>
 					</div>
 				),
 			}
@@ -137,7 +136,7 @@ export function TerminalContainer() {
 			<input
 				ref={inputRef}
 				placeholder='Type command'
-				className={`bottom-0 z-50 w-full bg-transparent px-3 py-2 focus-visible:outline-none`}
+				className={`bottom-0 z-50 w-full border-t border-gray-200 bg-transparent px-3 py-2 focus-visible:outline-none`}
 				type='text'
 				value={input}
 				onChange={e => setInput(e.target.value)}
