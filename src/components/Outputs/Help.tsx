@@ -10,11 +10,11 @@ export function Help({ setInput }: SetStateProps<string>) {
 				<ol className='flex w-full flex-col gap-1'>
 					{commandsList.map(c => {
 						return (
-							<li className='flex justify-between gap-3' key={c.cmd}>
+							<li className='grid grid-cols-3 gap-3' key={c.cmd}>
 								<Button key={c.cmd} onClick={() => setInput(c.cmd)}>
 									{c.cmd}
 								</Button>
-								<span>{c.description}</span>
+								<span className='col-span-2'>{c.description}</span>
 							</li>
 						)
 					})}

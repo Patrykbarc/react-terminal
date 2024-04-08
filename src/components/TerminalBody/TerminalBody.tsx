@@ -1,26 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import { ChatItem } from '../../utils/interfaces'
-import { Ls } from '../Outputs/Ls'
-import { About } from '../Outputs/About'
-import { Github } from '../Outputs/Github'
-import { Secret } from '../Outputs/Secret'
-import { InitialMessage } from '../Outputs/InitialMessage'
-import { commandsListArray } from '../../utils/constants/commandsList'
 import { closest } from 'fastest-levenshtein'
+import { commandsListArray } from '../../utils/constants/commandsList'
+import { ChatItem } from '../../utils/interfaces'
 import { Button } from '../Button/Button'
-import { Skills } from '../Outputs/Skills'
+import { About } from '../Outputs/About'
 import { Experience } from '../Outputs/Experience'
+import { Github } from '../Outputs/Github'
 import { Help } from '../Outputs/Help'
+import { InitialMessage } from '../Outputs/InitialMessage'
+import { Ls } from '../Outputs/Ls'
+import { Secret } from '../Outputs/Secret'
+import { Skills } from '../Outputs/Skills'
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
 	const [chat, setChat] = useState<ChatItem[]>([
 		{
-			id: 1,
+			id: Date.now(),
 			content: <InitialMessage setInput={setInput} />,
 		},
 	])
+
 	const messagesEndRef = useRef<HTMLDivElement>(null)
 	const inputRef = useRef<HTMLInputElement>(null)
 
@@ -28,7 +29,8 @@ export function TerminalContainer() {
 		const formattedInput = input.trim().toLowerCase()
 
 		if (event.key === 'Enter' && formattedInput.length > 0) {
-			const newChatItem: ChatItem = { id: chat.length + 1, content: `$ ${formattedInput}` }
+			const newChatItem: ChatItem = { id: Date.now(), content: `$ ${formattedInput}` }
+
 			setChat(prevState => [...prevState, newChatItem])
 			handleCommandResponse(formattedInput)
 			setInput('')
@@ -101,10 +103,9 @@ export function TerminalContainer() {
 						{chat.map((item, index) => {
 							const lastIndex = chat.length - 1
 							const isLastIndex = index === lastIndex
-
 							return (
 								<span
-									key={item.id + index}
+									key={item.id}
 									// className={
 									//     typeof item.content === 'string' && item.content.includes('$')
 									//         ? 'text-neutral-800'

@@ -6,7 +6,7 @@ export interface Commands {
 }
 
 export interface ChatItem {
-	id: number
+	id: number | string
 	content: string | React.ReactNode | JSX.Element
 }
 
