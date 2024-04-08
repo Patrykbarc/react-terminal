@@ -9,7 +9,7 @@ import { Experience } from '../Outputs/Experience'
 import { Github } from '../Outputs/Github'
 import { Help } from '../Outputs/Help'
 import { InitialMessage } from '../Outputs/InitialMessage'
-import { Ls } from '../Outputs/Ls'
+import { List } from '../Outputs/List'
 import { Secret } from '../Outputs/Secret'
 import { Skills } from '../Outputs/Skills'
 
@@ -29,7 +29,22 @@ export function TerminalContainer() {
 		const formattedInput = input.trim().toLowerCase()
 
 		if (event.key === 'Enter' && formattedInput.length > 0) {
-			const newChatItem: ChatItem = { id: Date.now(), content: `$ ${formattedInput}` }
+			const date = new Date()
+			const hours = date.getHours()
+			const minutes = date.getMinutes()
+			const seconds = date.getSeconds()
+
+			const actualTime = `${hours}:${minutes}:${seconds}`
+
+			const newChatItem: ChatItem = {
+				id: Date.now(),
+				content: (
+					<div className='flex justify-between'>
+						<span> $ {formattedInput}</span>
+						<small>{actualTime}</small>
+					</div>
+				),
+			}
 
 			setChat(prevState => [...prevState, newChatItem])
 			handleCommandResponse(formattedInput)
@@ -57,8 +72,8 @@ export function TerminalContainer() {
 					response = null
 					setChat([])
 					break
-				case 'ls':
-					response = <Ls setInput={setInput} />
+				case 'list':
+					response = <List setInput={setInput} />
 					break
 				case 'help':
 					response = <Help setInput={setInput} />

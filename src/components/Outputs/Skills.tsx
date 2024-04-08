@@ -8,11 +8,11 @@ export function Skills({ setInput }: SetStateProps<string>) {
 		<div className='flex flex-col gap-3'>
 			<span>My tech stack:</span>
 			<ol className='flex flex-col gap-1'>
-				{skills.map(({ technology, proficiency, icon, alt }) => {
+				{skills.map(({ technology, icon, alt }) => {
 					return (
 						<li className='flex items-center' key={technology}>
 							<img src={icon} alt={alt} className='me-3 size-6' />
-							<span>{technology}</span> : <span>{proficiency}</span>
+							<span>{technology}</span>
 						</li>
 					)
 				})}

@@ -2,7 +2,7 @@ import { Commands } from '../interfaces'
 
 export const commandsList: Commands[] = [
 	{
-		cmd: 'ls',
+		cmd: 'list',
 		description: 'Displays a list of all available commands',
 	},
 	{
@@ -43,7 +43,7 @@ export const commandsList: Commands[] = [
 	},
 ]
 export const commandsListArray: string[] = [
-	'ls',
+	'list',
 	'about',
 	'skills',
 	'education',

@@ -8,7 +8,7 @@ import { ButtonsWrapper } from '../ButtonsWrapper/ButtonsWrapper'
 // 	handleSetInput: (value: string) => void
 // }
 
-export function Ls({ setInput }: SetStateProps<string>) {
+export function List({ setInput }: SetStateProps<string>) {
 	return (
 		<ButtonsWrapper>
 			Available commands:
