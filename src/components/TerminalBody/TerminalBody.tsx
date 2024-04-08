@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
+import { handleSetChat } from '../../utils/functions/handleSetChat'
 import { ChatItem } from '../../utils/interfaces'
 import { InitialMessage } from '../Outputs/InitialMessage'
 import { TerminalBodyWrapper } from '../TerminalBodyWrapper/TerminalBodyWrapper'
-import { getActualTime } from '../../utils/functions/getDates'
-import { handleCommandResponse } from '../../utils/functions/handleCommandResponse'
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
@@ -17,31 +16,6 @@ export function TerminalContainer() {
 
 	const messagesEndRef = useRef<HTMLDivElement>(null)
 	const inputRef = useRef<HTMLInputElement>(null)
-	const { actualTime } = getActualTime()
-
-	function handleSetChat(event: React.KeyboardEvent<HTMLInputElement>) {
-		const formattedInput = input.trim().toLowerCase()
-
-		if (event.key === 'Enter' && formattedInput.length > 0) {
-			const newChatItem: ChatItem = {
-				id: Date.now(),
-				content: (
-					<div className='flex w-full justify-between  text-white'>
-						<div className='flex '>
-							<span className='block w-fit bg-green-700 px-2'>/patrykbarc</span>
-							<span className='block w-fit bg-sky-700 px-2'>/portfolio</span>
-							<span className='bg-neutral-900 px-2 '>$ {formattedInput}</span>
-						</div>
-						<small className='text-neutral-900'>{actualTime}</small>
-					</div>
-				),
-			}
-
-			setChat(prevState => [...prevState, newChatItem])
-			handleCommandResponse({ formattedInput, setInput, setChat })
-			setInput('')
-		}
-	}
 
 	useEffect(() => {
 		if (messagesEndRef.current) {
@@ -84,7 +58,7 @@ export function TerminalContainer() {
 				type='text'
 				value={input}
 				onChange={e => setInput(e.target.value)}
-				onKeyUp={handleSetChat}
+				onKeyUp={event => handleSetChat({ event, states: { input, setInput, setChat } })}
 			/>
 		</TerminalBodyWrapper>
 	)

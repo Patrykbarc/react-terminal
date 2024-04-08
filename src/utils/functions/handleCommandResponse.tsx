@@ -1,15 +1,15 @@
 import { closest } from 'fastest-levenshtein'
-import { commandsListArray } from '../constants/commandsList'
-import { List } from '../../components/Outputs/List'
-import { Help } from '../../components/Outputs/Help'
+import { Dispatch, SetStateAction } from 'react'
 import { About } from '../../components/Outputs/About'
-import { Skills } from '../../components/Outputs/Skills'
+import { CommandNotFound } from '../../components/Outputs/CommandNotFound'
 import { Experience } from '../../components/Outputs/Experience'
 import { Github } from '../../components/Outputs/Github'
+import { Help } from '../../components/Outputs/Help'
+import { List } from '../../components/Outputs/List'
 import { Secret } from '../../components/Outputs/Secret'
+import { Skills } from '../../components/Outputs/Skills'
+import { commandsListArray } from '../constants/commandsList'
 import { ChatItem } from '../interfaces'
-import { Dispatch, SetStateAction } from 'react'
-import { CommandNotFound } from '../../components/Outputs/CommandNotFound'
 
 interface CommandResponse {
 	formattedInput: string
