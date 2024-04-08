@@ -1,15 +1,16 @@
 import { getActualTime } from '../../utils/functions/getDates'
 import { SetStateProps } from '../../utils/interfaces'
+import { ActualTime } from '../ActualTime/ActualTime'
 import { Button } from '../Button/Button'
 
 export function InitialMessage({ setInput }: SetStateProps<string>) {
-	const { actualDate, actualTime } = getActualTime()
+	const { actualDate } = getActualTime()
 
 	return (
 		<div className='flex flex-col gap-2'>
 			<div className='flex justify-between'>
 				<small>{actualDate}</small>
-				<small>{actualTime}</small>
+				<ActualTime />
 			</div>
 			<p className='text-6xl font-bold'>Hello world</p>
 			<p>Welcome to my own terminal [Version 1.0]</p>

@@ -1,5 +1,18 @@
 import { Commands } from '../interfaces'
 
+export const commandsListArray: string[] = [
+	'list',
+	'help',
+	'about',
+	'skills',
+	'experience',
+	'projects',
+	'contact',
+	'github',
+	'linkedin',
+	'clear',
+]
+
 export const commandsList: Commands[] = [
 	{
 		cmd: 'list',
@@ -41,17 +54,4 @@ export const commandsList: Commands[] = [
 		cmd: 'clear',
 		description: 'Clears the entire chat window',
 	},
-]
-export const commandsListArray: string[] = [
-	'list',
-	'about',
-	'skills',
-	'education',
-	'projects',
-	'contact',
-	'github',
-	'linkedin',
-	'blog',
-	'help',
-	'clear',
 ]

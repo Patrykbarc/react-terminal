@@ -58,7 +58,7 @@ export function TerminalContainer() {
 				type='text'
 				value={input}
 				onChange={e => setInput(e.target.value)}
-				onKeyUp={event => handleSetChat({ event, states: { input, setInput, setChat } })}
+				onKeyUp={event => handleSetChat({ event, useStates: { input, setInput, setChat } })}
 			/>
 		</TerminalBodyWrapper>
 	)

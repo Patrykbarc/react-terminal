@@ -20,9 +20,7 @@ interface CommandResponse {
 export function handleCommandResponse({ formattedInput, setInput, setChat }: CommandResponse) {
 	setTimeout(() => {
 		const closestCommand: string = closest(formattedInput, commandsListArray)
-		let response: string | JSX.Element | null = (
-			<CommandNotFound setInput={setInput} closestCommand={closestCommand} />
-		)
+		let response: string | JSX.Element | null
 
 		switch (formattedInput) {
 			case 'clear':
@@ -50,6 +48,8 @@ export function handleCommandResponse({ formattedInput, setInput, setChat }: Com
 			case 'secret':
 				response = <Secret />
 				break
+			default:
+				response = <CommandNotFound setInput={setInput} closestCommand={closestCommand} />
 		}
 
 		const newChatItem: ChatItem = { id: Date.now(), content: response }
