@@ -27,7 +27,7 @@ export function Experience({ setInput }: SetStateProps<string>) {
 	return (
 		<div className='flex flex-col gap-3'>
 			{experience.map((item, index) => (
-				<span key={index}>{item.text}</span>
+				<p key={index}>{item.text}</p>
 			))}
 			<ButtonsWrapper>
 				Suggested commands:

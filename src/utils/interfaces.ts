@@ -1,4 +1,4 @@
-import { Dispatch } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 export interface Commands {
 	cmd: string
@@ -11,5 +11,5 @@ export interface ChatItem {
 }
 
 export interface SetStateProps<T> {
-	setInput: Dispatch<React.SetStateAction<T>>
+	setInput: Dispatch<SetStateAction<T>>
 }

@@ -14,7 +14,7 @@ export function Help({ setInput }: SetStateProps<string>) {
 								<Button key={c.cmd} onClick={() => setInput(c.cmd)}>
 									{c.cmd}
 								</Button>
-								<span className='col-span-2'>{c.description}</span>
+								<p className='col-span-2'>{c.description}</p>
 							</li>
 						)
 					})}

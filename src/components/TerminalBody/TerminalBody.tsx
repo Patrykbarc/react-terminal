@@ -1,19 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import { closest } from 'fastest-levenshtein'
-import { commandsListArray } from '../../utils/constants/commandsList'
 import { ChatItem } from '../../utils/interfaces'
-import { Button } from '../Button/Button'
-import { About } from '../Outputs/About'
-import { Experience } from '../Outputs/Experience'
-import { Github } from '../Outputs/Github'
-import { Help } from '../Outputs/Help'
 import { InitialMessage } from '../Outputs/InitialMessage'
-import { List } from '../Outputs/List'
-import { Secret } from '../Outputs/Secret'
-import { Skills } from '../Outputs/Skills'
 import { TerminalBodyWrapper } from '../TerminalBodyWrapper/TerminalBodyWrapper'
 import { getActualTime } from '../../utils/functions/getDates'
+import { handleCommandResponse } from '../../utils/functions/handleCommandResponse'
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
@@ -47,56 +38,9 @@ export function TerminalContainer() {
 			}
 
 			setChat(prevState => [...prevState, newChatItem])
-			handleCommandResponse(formattedInput)
+			handleCommandResponse({ formattedInput, setInput, setChat })
 			setInput('')
 		}
-	}
-
-	// TODO przenieść handleCommandResponse do useReducer
-	function handleCommandResponse(cmd: string) {
-		setTimeout(() => {
-			const closestCommand = closest(cmd, commandsListArray)
-			let response: string | JSX.Element | null = (
-				<>
-					<span className='text-rose-600'>Command not found.</span>
-					<br />
-					<span className='text-rose-600'>
-						{' '}
-						Did you mean{' '}
-						{<Button onClick={() => setInput(closestCommand)}>{closestCommand}</Button>} ?
-					</span>
-				</>
-			)
-			switch (cmd) {
-				case 'clear':
-					response = null
-					setChat([])
-					break
-				case 'list':
-					response = <List setInput={setInput} />
-					break
-				case 'help':
-					response = <Help setInput={setInput} />
-					break
-				case 'about':
-					response = <About setInput={setInput} />
-					break
-				case 'skills':
-					response = <Skills setInput={setInput} />
-					break
-				case 'experience':
-					response = <Experience setInput={setInput} />
-					break
-				case 'github':
-					response = <Github />
-					break
-				case 'secret':
-					response = <Secret />
-					break
-			}
-			const newChatItem: ChatItem = { id: chat.length + 1, content: response }
-			setChat(prevState => [...prevState, newChatItem])
-		}, 150)
 	}
 
 	useEffect(() => {
