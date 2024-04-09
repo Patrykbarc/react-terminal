@@ -1,18 +1,24 @@
 interface ButtonProps {
 	children: React.ReactNode
 	value?: string
+	variant?: 'primary' | 'outline' | 'link'
 	onClick?: () => void
 }
 
-export function Button({ children, onClick, value }: ButtonProps) {
+const buttonVariants = {
+	primary: 'bg-sky-600 text-white hover:bg-sky-700',
+	outline:
+		'border border-sky-600 text-sky-600 hover:bg-sky-600 hover:text-white hover:border-sky-600',
+	link: 'text-sky-600 hover:text-sky-800',
+}
+
+export function Button({ children, value, variant = 'primary', onClick }: ButtonProps) {
 	return (
 		<button
-			className='cursor-pointer rounded-sm bg-sky-600 px-2 text-white transition-colors hover:bg-sky-700'
+			className={`cursor-pointer rounded-sm px-2 transition-colors ${buttonVariants[variant]}`}
 			value={value}
 			onClick={onClick !== undefined ? () => onClick() : undefined}>
 			{children}
 		</button>
 	)
 }
-
-// bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
