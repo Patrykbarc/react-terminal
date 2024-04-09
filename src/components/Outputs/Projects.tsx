@@ -1,44 +1,69 @@
+import { GlobeAltIcon } from '@heroicons/react/24/outline'
+
 const projectsList: Record<string, string>[] = [
 	{
 		name: 'Password Generator',
 		gitUrl: 'https://github.com/Patrykbarc/ts-password-generator',
 		deploy: 'https://react-ts-password-generator.netlify.app/',
+		description:
+			'The Password Generator App is a simple React-based powered with TypeScript application that allows users to generate secure passwords based on their preferences. The application provides a user-friendly interface to customize password length and include or exclude different character types such as letters, capital letters, numbers, and special characters.',
 	},
 	{
 		name: 'The Old Sailor Barber',
 		gitUrl: 'https://github.com/Patrykbarc/react-old-sailor',
 		deploy: 'https://theoldsailorbarber.netlify.app/',
+		description: '',
 	},
 	{
 		name: 'Piotr Kukla Photo',
 		deploy: 'http://pkuklaphoto.pl/',
+		description: '',
 	},
 	{
 		name: 'Artist portfolio',
 		gitUrl: 'https://github.com/Patrykbarc/react-artisans',
 		deploy: 'https://main--react-ts-artisans.netlify.app/',
+		description: '',
 	},
 	{
 		name: 'Calculator App',
 		gitUrl: 'https://github.com/Patrykbarc/react-calculator',
 		deploy: 'https://react-calculator-patrykbarc.netlify.app/',
+		description: '',
 	},
 ]
 
 export function Projects() {
 	return (
-		<ol className='flex'>
-			{projectsList.map(({ name, gitUrl, deploy }) => {
+		<ol>
+			{projectsList.map(({ name, description, gitUrl, deploy }) => {
 				return (
-					<li className='flex flex-col  gap-3' key={name}>
-						{gitUrl && (
-							<a href={gitUrl} target='_blank'>
-								GitHub: {name}
-							</a>
-						)}
-						<a href={deploy} target='_blank'>
-							deploy: {name}
-						</a>
+					<li
+						className='mb-3 border-b border-gray-200 border-opacity-50 pb-3 last-of-type:border-none'
+						key={name}>
+						<div className='flex flex-col'>
+							<div className='mb-3 flex flex-col'>
+								<p className='text-lg font-bold'>{name}</p>
+								<small>{description}</small>
+							</div>
+							<div className='flex gap-3'>
+								{gitUrl && (
+									<a href={gitUrl} className='flex items-center gap-1' target='_blank'>
+										<img
+											className='size-4'
+											src='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg'
+											alt='GitHub logo'
+										/>
+										GitHub Repository
+									</a>
+								)}
+								{name && (
+									<a href={deploy} className='flex items-center gap-1' target='_blank'>
+										<GlobeAltIcon className='size-4' /> Website
+									</a>
+								)}
+							</div>
+						</div>
 					</li>
 				)
 			})}

@@ -4,6 +4,7 @@ import { handleSetChat } from '../../utils/functions/handleSetChat'
 import { ChatItem } from '../../utils/interfaces'
 import { InitialMessage } from '../Outputs/InitialMessage'
 import { TerminalBodyWrapper } from '../TerminalBodyWrapper/TerminalBodyWrapper'
+import { HorizontalRuler } from '../HorizontalRuler/HorizontalRuler'
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
@@ -46,7 +47,7 @@ export function TerminalContainer() {
 						>
 							{item.content}
 
-							{!isLastIndex && <hr data-index={index} className='my-1 opacity-50' />}
+							{!isLastIndex && <HorizontalRuler index={index} />}
 						</span>
 					)
 				})}
