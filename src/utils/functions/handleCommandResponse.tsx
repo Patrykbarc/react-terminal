@@ -6,6 +6,7 @@ import { Experience } from '../../components/Outputs/Experience'
 import { Github } from '../../components/Outputs/Github'
 import { Help } from '../../components/Outputs/Help'
 import { List } from '../../components/Outputs/List'
+import { Projects } from '../../components/Outputs/Projects'
 import { Secret } from '../../components/Outputs/Secret'
 import { Skills } from '../../components/Outputs/Skills'
 import { commandsListArray } from '../constants/commandsList'
@@ -41,6 +42,9 @@ export function handleCommandResponse({ formattedInput, setInput, setChat }: Com
 				break
 			case 'experience':
 				response = <Experience setInput={setInput} />
+				break
+			case 'projects':
+				response = <Projects />
 				break
 			case 'github':
 				response = <Github />
