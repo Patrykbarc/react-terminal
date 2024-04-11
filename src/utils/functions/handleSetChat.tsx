@@ -22,14 +22,14 @@ export function handleSetChat({ event, useStates: { input, setInput, setChat } }
 			content: (
 				<>
 					<div className='mb-2 flex w-full justify-between text-white'>
-						<div className='flex'>
-							<span className='block w-fit bg-green-700 px-2'>patrykbarc</span>
-							<span className='flex w-fit items-center gap-1 bg-sky-600 px-2'>
+						<div className='hidden sm:flex'>
+							<div className='block w-fit bg-green-700 px-2'>patrykbarc</div>
+							<div className='flex w-fit items-center gap-1 bg-sky-600 px-2'>
 								<FolderIcon className='size-4' /> portfolio
-							</span>
-							<span className='flex items-center gap-1 bg-neutral-800 px-2'>
+							</div>
+							<div className='flex items-center gap-1 bg-neutral-800 px-2'>
 								<CodeBracketIcon className='size-4' /> {formattedInput}
-							</span>
+							</div>
 						</div>
 						<ActualTime />
 					</div>

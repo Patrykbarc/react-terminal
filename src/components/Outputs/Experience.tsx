@@ -62,7 +62,7 @@ export function Experience({ setInput }: SetStateProps<string>) {
 		<div className='flex flex-col gap-8'>
 			{experience.map((item, index) => (
 				<div className='flex w-full flex-col gap-4'>
-					<div className='h-fit w-2/6 text-balance capitalize'>
+					<div className='h-fit text-balance capitalize'>
 						<p className='text-2xl font-bold'>{item.position}</p>
 						<small className='w-fit'>
 							{item.company} | {item.timespan}
