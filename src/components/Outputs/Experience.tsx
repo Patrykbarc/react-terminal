@@ -4,30 +4,75 @@ import { ButtonsWrapper } from '../ButtonsWrapper/ButtonsWrapper'
 
 const experience = [
 	{
-		text: "In 2017, I began studying computer graphics and multimedia production at UITM in Rzeszow. In 2020, I completed my bachelor's degree and began my professional path.",
+		company: 'modern morms',
+		position: 'full-stack developer',
+		timespan: '04.2023 - current',
+		text: (
+			<>
+				<p>
+					I designed and created an internal product configurator, enabling company employees to
+					quickly and easily create tasks.
+				</p>
+				<p>
+					Currently, I am actively involved in the process of migrating the old system to a new one,
+					which I am coding myself using Next.js and MySql technologies.
+				</p>
+				<p>
+					I continue to play a key role in its development and customization to fit the company's
+					needs. I also designed and created a tool for the production department to manage
+					processes.
+				</p>
+				<p>
+					I focus on user experience by analyzing and adapting interfaces to meet user needs. I
+					optimize the system for performance and user experience.
+				</p>
+			</>
+		),
 	},
 	{
-		text: 'In the same year, I started working at Modern Forms as a graphic designer, where I was in charge of DTP and graphic design.',
-	},
-	{
-		text: 'During my work, I steered towards Frontend and UI/UX.',
-	},
-	{
-		text: 'Since August 2023, I have been working as a junior Fullstack Developer.',
-	},
-	{
-		text: 'I am responsible for the development of an internal task management system tailored to the unique needs of sales representatives, graphic designers and the production department.',
-	},
-	{
-		text: "I use web technologies such as Next.js along with Typescript, PHP, SCSS, Tailwind and Bootstrap frameworks to ensure the system runs smoothly and optimizes the company's workflow processes.",
+		company: 'modern forms',
+		position: 'graphic designer',
+		timespan: '2020 - 2023',
+		text: (
+			<>
+				<span>
+					I designed and created an internal product configurator, enabling company employees to
+					quickly and easily create tasks.
+				</span>
+				<span>
+					Currently, I am actively involved in the process of migrating the old system to a new one,
+					which I am coding myself using Next.js and MySql technologies.
+				</span>
+				<span>
+					I continue to play a key role in its development and customization to fit the company's
+					needs. I also designed and created a tool for the production department to manage
+					processes.
+				</span>
+				<span>
+					I focus on user experience by analyzing and adapting interfaces to meet user needs. I
+					optimize the system for performance and user experience.
+				</span>
+			</>
+		),
 	},
 ]
 
 export function Experience({ setInput }: SetStateProps<string>) {
 	return (
-		<div className='flex flex-col gap-3'>
+		<div className='flex flex-col gap-8'>
 			{experience.map((item, index) => (
-				<p key={index}>{item.text}</p>
+				<div className='flex w-full flex-col gap-4'>
+					<div className='h-fit w-2/6 text-balance capitalize'>
+						<p className='text-2xl font-bold'>{item.position}</p>
+						<small className='w-fit'>
+							{item.company} | {item.timespan}
+						</small>
+					</div>
+
+					<div className='w-5/6 gap-3' key={index}>
+						<p className='flex flex-col gap-3'>{item.text}</p>
+					</div>
+				</div>
 			))}
 			<ButtonsWrapper>
 				Suggested commands:
