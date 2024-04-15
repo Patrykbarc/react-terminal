@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, ReactNode, SetStateAction } from 'react'
 
 export interface Commands {
 	cmd: string
@@ -7,9 +7,17 @@ export interface Commands {
 
 export interface ChatItem {
 	id: number | string
-	content: string | React.ReactNode | JSX.Element
+	content: string | ReactNode | Element
 }
 
 export interface SetStateProps<T> {
 	setInput: Dispatch<SetStateAction<T>>
+}
+
+export interface ProjectsList {
+	name: string
+	gitUrl?: string
+	deploy: string
+	description?: string | ReactNode
+	techs: string | ReactNode
 }
