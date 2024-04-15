@@ -21,8 +21,8 @@ export function handleSetChat({ event, useStates: { input, setInput, setChat } }
 			id: Date.now(),
 			content: (
 				<>
-					<div className='mb-2 flex w-full justify-between text-white'>
-						<div className='hidden sm:flex'>
+					<div className='mb-2 flex w-full flex-wrap justify-between text-white'>
+						<div className='hidden flex-wrap sm:flex'>
 							<div className='block w-fit bg-green-700 px-2'>patrykbarc</div>
 							<div className='flex w-fit items-center gap-1 bg-sky-600 px-2'>
 								<FolderIcon className='size-4' /> portfolio
@@ -33,7 +33,7 @@ export function handleSetChat({ event, useStates: { input, setInput, setChat } }
 						</div>
 						<ActualTime />
 					</div>
-					<span>$ {formattedInput}</span>
+					{/* <span>$ {formattedInput}</span> */}
 				</>
 			),
 		}

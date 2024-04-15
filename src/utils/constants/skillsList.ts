@@ -20,29 +20,9 @@ export const skills = [
 		alt: 'NEXT logo',
 	},
 	{
-		technology: 'Bootstrap',
-		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg',
-		alt: 'Bootstrap logo',
-	},
-	{
-		technology: 'Tailwind',
-		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
-		alt: 'Tailwind logo',
-	},
-	{
-		technology: 'HTML',
-		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',
-		alt: 'HTML logo',
-	},
-	{
-		technology: 'Sass',
-		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg',
-		alt: 'Sass logo',
-	},
-	{
-		technology: 'Git',
-		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
-		alt: 'Git logo',
+		technology: 'PHP',
+		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-plain.svg',
+		alt: 'PHP logo',
 	},
 	{
 		technology: 'MySQL',
@@ -50,9 +30,24 @@ export const skills = [
 		alt: 'MySQL logo',
 	},
 	{
-		technology: 'PHP',
-		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-plain.svg',
-		alt: 'PHP logo',
+		technology: 'Sass',
+		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg',
+		alt: 'Sass logo',
+	},
+	{
+		technology: 'Tailwind',
+		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
+		alt: 'Tailwind logo',
+	},
+	{
+		technology: 'Bootstrap',
+		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg',
+		alt: 'Bootstrap logo',
+	},
+	{
+		technology: 'Git',
+		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
+		alt: 'Git logo',
 	},
 	{
 		technology: 'Adobe Illustrator',

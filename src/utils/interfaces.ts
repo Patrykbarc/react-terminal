@@ -7,7 +7,7 @@ export interface Commands {
 
 export interface ChatItem {
 	id: number | string
-	content: string | ReactNode | Element
+	content: string | ReactNode | JSX.Element
 }
 
 export interface SetStateProps<T> {

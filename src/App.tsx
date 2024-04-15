@@ -6,7 +6,7 @@ function App() {
 	return (
 		<>
 			<MobileDeviceNotification />
-			<div className='flex h-screen items-start justify-center pt-24 text-neutral-900 md:mt-0 md:items-center'>
+			<div className='flex h-screen items-start justify-center pt-24 text-neutral-900 sm:pt-0 md:mt-0 md:items-center'>
 				<div className='scale-125'>
 					<TerminalHeader />
 					<TerminalContainer />

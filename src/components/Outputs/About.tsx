@@ -5,13 +5,24 @@ import { ButtonsWrapper } from '../ButtonsWrapper/ButtonsWrapper'
 export function About({ setInput }: SetStateProps<string>) {
 	return (
 		<div className='flex flex-col gap-3'>
+			<div>
+				<p className='mb-1 text-3xl font-black'>Patryk Barć</p>
+				<p className='text-lg font-light uppercase'>
+					junior fullstack developer & graphic designer
+				</p>
+			</div>
 			<p>
-				I am an experienced and professional web developer with one year of commercial experience in
-				full-stack programming and web design
+				I am a professional web developer with one year of commercial experience in fullstack
+				programming and web design.
 			</p>
-			<p>Additionally, I have 3.5 years of experience as a graphic designer.</p>
-			<p>I possess strong creative and analytical skills.</p>
-			<p>I am also a team player who pays attention to detail.</p>
+			<p>
+				I have 3.5 years of experience as a graphic designer and a bachelor's degree in
+				"Computer Graphics and Multimedia Production."
+			</p>
+			<p>
+				I possess strong creative and analytical skills. I am also a team player who pays attention
+				to detail.
+			</p>
 
 			<ButtonsWrapper>
 				Suggested commands:
