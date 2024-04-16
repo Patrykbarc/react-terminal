@@ -3,7 +3,7 @@ interface ButtonProps {
 	value?: string
 	variant?: 'primary' | 'outline' | 'link'
 	classname?: string
-	onClick?: () => void
+	onClick?: (e?: any) => void
 }
 
 const buttonVariants = {
@@ -18,7 +18,7 @@ export function Button({ children, value, variant = 'primary', classname, onClic
 		<button
 			className={`cursor-pointer rounded-sm transition-colors ${buttonVariants[variant]} ${classname}`}
 			value={value}
-			onClick={onClick !== undefined ? () => onClick() : undefined}>
+			onClick={onClick !== undefined ? e => onClick(e) : undefined}>
 			{children}
 		</button>
 	)

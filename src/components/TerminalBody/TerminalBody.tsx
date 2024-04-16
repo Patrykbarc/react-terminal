@@ -32,21 +32,13 @@ export function TerminalContainer() {
 		<TerminalBodyWrapper>
 			<div
 				ref={messagesEndRef}
-				className='flex h-full flex-col gap-1 overflow-y-scroll break-words px-3 py-2'>
+				className='flex h-full flex-col gap-1 overflow-y-scroll break-words px-3 pb-4 pt-2'>
 				{chat.map((item, index) => {
 					const lastIndex = chat.length - 1
 					const isLastIndex = index === lastIndex
 					return (
-						<span
-							key={item.id}
-							// className={
-							//     typeof item.content === 'string' && item.content.includes('$')
-							//         ? 'text-neutral-800'
-							//         : 'text-sky-700'
-							// }
-						>
+						<span key={item.id}>
 							{item.content}
-
 							{!isLastIndex && <HorizontalRuler index={index} />}
 						</span>
 					)

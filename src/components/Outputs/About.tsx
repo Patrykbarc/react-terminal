@@ -7,17 +7,15 @@ export function About({ setInput }: SetStateProps<string>) {
 		<div className='flex flex-col gap-3'>
 			<div>
 				<p className='mb-1 text-3xl font-black'>Patryk Barć</p>
-				<p className='text-lg font-light uppercase'>
-					junior fullstack developer & graphic designer
-				</p>
+				<p className='text-lg font-light uppercase'>fullstack developer & graphic designer</p>
 			</div>
 			<p>
-				I am a professional web developer with one year of commercial experience in fullstack
+				I am a professional web developer with commercial experience in fullstack
 				programming and web design.
 			</p>
 			<p>
-				I have 3.5 years of experience as a graphic designer and a bachelor's degree in
-				"Computer Graphics and Multimedia Production."
+				I have 3.5 years of experience as a graphic designer and a bachelor's degree in "Computer
+				Graphics and Multimedia Production".
 			</p>
 			<p>
 				I possess strong creative and analytical skills. I am also a team player who pays attention
