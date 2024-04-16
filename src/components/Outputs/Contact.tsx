@@ -1,8 +1,10 @@
+import { MouseEvent, useContext, useEffect } from 'react'
 import { SetStateProps } from '../../utils/interfaces'
 import { Button } from '../Button/Button'
 import { ButtonsWrapper } from '../ButtonsWrapper/ButtonsWrapper'
 
 import { PhoneIcon, EnvelopeOpenIcon, MapPinIcon } from '@heroicons/react/16/solid'
+import { NotificationContext } from '../../utils/contexts/NotificationContext'
 
 const contactInfo = [
 	{
@@ -20,9 +22,23 @@ const contactInfo = [
 ]
 
 export function Contact({ setInput }: SetStateProps<string>) {
-	function copyToClipboard(e: Event) {
-		console.log(e)
+	const { isNotificationActive, setIsNotificationActive } = useContext(NotificationContext)
+
+	function copyToClipboard(e: MouseEvent<HTMLButtonElement>) {
+		const target = e.target as HTMLButtonElement
+		if (target !== null) {
+			navigator.clipboard.writeText(target.textContent || '')
+			setIsNotificationActive(true)
+		}
 	}
+
+	useEffect(() => {
+		const timeout = setTimeout(() => {
+			setIsNotificationActive(false)
+		}, 2500)
+
+		return () => clearInterval(timeout)
+	}, [isNotificationActive, setIsNotificationActive])
 
 	return (
 		<div className='flex flex-col gap-2'>
@@ -32,7 +48,7 @@ export function Contact({ setInput }: SetStateProps<string>) {
 						key={contact.text}
 						classname='w-fit pe-3'
 						value={contact.text}
-						onClick={e => console.log(e)}>
+						onClick={e => copyToClipboard(e)}>
 						<div className='flex items-center'>
 							<div className='size-4'>{contact.icon}</div>
 							<p className='ps-2'>{contact.text}</p>
