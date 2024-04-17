@@ -9,12 +9,11 @@ interface CommandNotFoundProps {
 export function CommandNotFound({ setInput, closestCommand }: CommandNotFoundProps) {
 	return (
 		<>
-			<span className='text-rose-600'>Command not found.</span>
-			<br />
-			<span className='text-rose-600'>
+			<p className='text-rose-600'>Command not found.</p>
+			<p className='text-rose-600'>
 				{' '}
 				Did you mean {<Button onClick={() => setInput(closestCommand)}>{closestCommand}</Button>} ?
-			</span>
+			</p>
 		</>
 	)
 }

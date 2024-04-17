@@ -36,10 +36,10 @@ export function TerminalContainer() {
 					const lastIndex = chat.length - 1
 					const isLastIndex = index === lastIndex
 					return (
-						<span key={item.id}>
+						<div key={item.id} id={String(item.id)}>
 							{item.content}
 							{!isLastIndex && <HorizontalRuler index={index} />}
-						</span>
+						</div>
 					)
 				})}
 			</div>
