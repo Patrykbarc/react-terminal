@@ -1,10 +1,10 @@
 import { ClipboardDocumentCheckIcon } from '@heroicons/react/16/solid'
 
-interface AlertPopupProps {
+interface NotificationProps {
 	isNotificationActive: boolean
 }
 
-export function AlertPopup({ isNotificationActive }: AlertPopupProps) {
+export function Notification({ isNotificationActive }: NotificationProps) {
 	return (
 		<div
 			className={`absolute left-1/2 z-50 flex -translate-x-1/2 items-center rounded bg-gray-200 p-3 shadow-lg transition-all duration-700 ease-in-out ${isNotificationActive ? 'top-6' : '-top-full'}`}>

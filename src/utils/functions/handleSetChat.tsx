@@ -33,7 +33,9 @@ export function handleSetChat({ event, useStates: { input, setInput, setChat } }
 						</div>
 						<ActualTime />
 					</div>
-					{/* <span>$ {formattedInput}</span> */}
+					<span className='block w-full rounded-sm bg-neutral-800 py-1 pr-2.5 ps-2 text-white sm:hidden'>
+						$ {formattedInput}
+					</span>
 				</>
 			),
 		}

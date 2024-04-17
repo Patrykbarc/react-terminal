@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AlertPopup } from './components/AlertPopup/AlertPopup'
+import { Notification } from './components/Notification/Notification'
 import { MobileDeviceNotification } from './components/MobileDeviceNotification/MobileDeviceNotification'
 import { TerminalContainer } from './components/TerminalBody/TerminalBody'
 import { TerminalHeader } from './components/TerminalHeader/TerminalHeader'
@@ -11,9 +11,9 @@ function App() {
 	return (
 		<>
 			<MobileDeviceNotification />
-			<AlertPopup isNotificationActive={isNotificationActive} />
+			<Notification isNotificationActive={isNotificationActive} />
 
-			<div className='flex h-screen items-start justify-center pt-24 text-neutral-900 sm:pt-0 md:mt-0 md:items-center'>
+			<div className='flex h-screen items-start justify-center pt-24 text-neutral-900 md:items-center md:pt-0'>
 				<div className='scale-125'>
 					<TerminalHeader />
 					<NotificationContext.Provider value={{ isNotificationActive, setIsNotificationActive }}>

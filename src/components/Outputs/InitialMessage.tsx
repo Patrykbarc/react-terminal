@@ -12,7 +12,7 @@ export function InitialMessage({ setInput }: SetStateProps<string>) {
 				<small>{actualDate}</small>
 				<ActualTime />
 			</div>
-			<p className='text-6xl font-bold'>Hello world</p>
+			<p className='text-4xl font-black sm:text-6xl'>Hello world</p>
 			<p>Welcome to my own terminal [Version 1.0]</p>
 			<p>© Patryk Barć. All rights reserved.</p>
 			<p>
