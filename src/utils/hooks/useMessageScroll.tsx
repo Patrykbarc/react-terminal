@@ -35,7 +35,7 @@ export function useMessageScroll({
 			function handleScrollToTop() {
 				const isChildOverflowing = checkDivHeight()
 
-				if (isChildOverflowing?.isOverflowing) {
+				if (isChildOverflowing !== undefined) {
 					setIsChildOverflowing(isChildOverflowing)
 				}
 			}
@@ -49,6 +49,8 @@ export function useMessageScroll({
 
 					if (lastChildHeight > divHeight) {
 						return { isOverflowing: true, id: lastChild.id }
+					} else {
+						return { isOverflowing: false, id: '' }
 					}
 				}
 			}
