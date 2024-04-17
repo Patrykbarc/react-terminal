@@ -1,6 +1,5 @@
 import { CodeBracketIcon, FolderIcon } from '@heroicons/react/24/outline'
 import { ActualTime } from '../ActualTime/ActualTime'
-import { useId } from 'react'
 
 interface CommandBadgeProps {
 	input: string

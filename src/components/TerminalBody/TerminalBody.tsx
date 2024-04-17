@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { handleSetChat } from '../../utils/functions/handleSetChat'
 import { ChatItem, OverflowingChild } from '../../utils/interfaces'
 import { InitialMessage } from '../Outputs/InitialMessage'
