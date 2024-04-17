@@ -21,3 +21,8 @@ export interface ProjectsList {
 	description?: string | ReactNode
 	techs: string | ReactNode
 }
+
+export interface OverflowingChild {
+	isOverflowing: boolean
+	id: string
+}

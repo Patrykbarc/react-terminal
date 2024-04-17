@@ -1,37 +1,31 @@
 import { useEffect, useRef, useState } from 'react'
 import { handleSetChat } from '../../utils/functions/handleSetChat'
-import { ChatItem } from '../../utils/interfaces'
+import { ChatItem, OverflowingChild } from '../../utils/interfaces'
 import { InitialMessage } from '../Outputs/InitialMessage'
 import { TerminalBodyWrapper } from '../TerminalBodyWrapper/TerminalBodyWrapper'
 import { HorizontalRuler } from '../HorizontalRuler/HorizontalRuler'
+import { useMessageScroll } from '../../utils/hooks/useMessageScroll'
+import { ScrollToTop } from '../ScrollToTop/ScrollToTop'
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
 	const [chat, setChat] = useState<ChatItem[]>([
-		{
-			id: Date.now(),
-			content: <InitialMessage setInput={setInput} />,
-		},
+		{ id: Date.now(), content: <InitialMessage setInput={setInput} /> },
 	])
+	const [isChildOverflowing, setIsChildOverflowing] = useState<OverflowingChild | null>(null)
 
 	const messagesEndRef = useRef<HTMLDivElement>(null)
 	const inputRef = useRef<HTMLInputElement>(null)
 
-	useEffect(() => {
-		if (messagesEndRef.current) {
-			messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight
-		}
-
-		messagesEndRef.current?.addEventListener('click', () => {
-			inputRef.current !== null && inputRef.current.focus()
-		})
-	}, [chat])
-
+	useMessageScroll({ messagesEndRef, inputRef, chat, setIsChildOverflowing })
+	console.log(isChildOverflowing)
 	return (
 		<TerminalBodyWrapper>
 			<div
 				ref={messagesEndRef}
 				className='flex h-full flex-col gap-1 overflow-y-scroll break-words px-3 pb-4 pt-2'>
+				{isChildOverflowing && <ScrollToTop id={isChildOverflowing.id} />}
+
 				{chat.map((item, index) => {
 					const lastIndex = chat.length - 1
 					const isLastIndex = index === lastIndex
