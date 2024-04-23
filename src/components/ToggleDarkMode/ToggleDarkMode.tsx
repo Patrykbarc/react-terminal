@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useLocalStorage } from '../../utils/hooks/useLocalStorage'
+import { MoonIcon, SunIcon } from '@heroicons/react/16/solid'
 
 export function ToggleDarkMode() {
 	const [darkMode, setDarkMode] = useLocalStorage('darkMode', false)
@@ -13,8 +14,14 @@ export function ToggleDarkMode() {
 	}, [darkMode])
 
 	return (
-		<button className='absolute border bg-gray-200 p-3' onClick={() => setDarkMode(!darkMode)}>
-			{darkMode ? 'Light mode' : 'Dark mode'}
-		</button>
+		<div
+			className='absolute m-5 cursor-pointer transition-transform hover:scale-110'
+			onClick={() => setDarkMode(!darkMode)}>
+			{darkMode ? (
+				<SunIcon className='size-12 text-neutral-800' />
+			) : (
+				<MoonIcon className='size-12 text-neutral-800' />
+			)}
+		</div>
 	)
 }

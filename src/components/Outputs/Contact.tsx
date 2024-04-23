@@ -41,21 +41,26 @@ export function Contact({ setInput }: SetStateProps<string>) {
 	}, [isNotificationActive, setIsNotificationActive])
 
 	return (
-		<div className='flex flex-col gap-2'>
-			{contactInfo.map(contact => {
-				return (
-					<Button
-						key={contact.text}
-						classname='w-fit pe-3'
-						value={contact.text}
-						onClick={e => copyToClipboard(e)}>
-						<div className='flex items-center'>
-							<div className='size-4'>{contact.icon}</div>
-							<p className='ps-2'>{contact.text}</p>
-						</div>
-					</Button>
-				)
-			})}
+		<div className='flex flex-col gap-8'>
+			<div className='flex flex-col gap-2.5'>
+				<small>Tip: Click the button to copy text to the clipboard.</small>
+				<div className='flex flex-col gap-1'>
+					{contactInfo.map(contact => {
+						return (
+							<Button
+								key={contact.text}
+								classname='w-fit pe-3'
+								value={contact.text}
+								onClick={e => copyToClipboard(e)}>
+								<div className='flex items-center'>
+									<div className='size-4'>{contact.icon}</div>
+									<p className='ps-2'>{contact.text}</p>
+								</div>
+							</Button>
+						)
+					})}
+				</div>
+			</div>
 
 			<ButtonsWrapper>
 				Suggested commands:

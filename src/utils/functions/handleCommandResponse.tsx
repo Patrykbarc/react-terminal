@@ -12,6 +12,8 @@ import { Skills } from '../../components/Outputs/Skills'
 import { commandsListArray } from '../constants/commandsList'
 import { ChatItem } from '../interfaces'
 import { Contact } from '../../components/Outputs/Contact'
+import { Linkedin } from '../../components/Outputs/Linkedin'
+import { Clear } from '../../components/Outputs/Clear'
 
 interface CommandResponse {
 	formattedInput: string
@@ -26,7 +28,7 @@ export function handleCommandResponse({ formattedInput, setInput, setChat }: Com
 
 		switch (formattedInput) {
 			case 'clear':
-				response = null
+				response = <Clear setInput={setInput} />
 				setChat([])
 				break
 			case 'list':
@@ -51,7 +53,10 @@ export function handleCommandResponse({ formattedInput, setInput, setChat }: Com
 				response = <Contact setInput={setInput} />
 				break
 			case 'github':
-				response = <Github />
+				response = <Github setInput={setInput} />
+				break
+			case 'linkedin':
+				response = <Linkedin setInput={setInput} />
 				break
 			case 'secret':
 				response = <Secret />

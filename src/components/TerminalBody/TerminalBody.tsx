@@ -31,7 +31,9 @@ export function TerminalContainer() {
 				<ScrollToTop
 					scrollToTopRef={scrollToTopRef}
 					id={isChildOverflowing !== null ? isChildOverflowing.id : ''}
-					className={isChildOverflowing ? 'opacity-100' : 'opacity-0'}
+					className={
+						isChildOverflowing ? 'opacity-100' : 'pointer-events-none cursor-auto opacity-0'
+					}
 				/>
 			</TerminalChat>
 			<TerminalInput
