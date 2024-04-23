@@ -16,7 +16,7 @@ function App() {
 			<Notification isNotificationActive={isNotificationActive} />
 
 			<div className='flex h-dvh items-start justify-center text-neutral-800 md:items-center'>
-				<div className='scale-125 pt-36 md:pt-0'>
+				<div className='scale-125 pt-28 md:pt-0'>
 					<TerminalHeader />
 					<NotificationContext.Provider value={{ isNotificationActive, setIsNotificationActive }}>
 						<TerminalContainer />
