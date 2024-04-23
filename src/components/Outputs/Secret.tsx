@@ -20,7 +20,7 @@ export function Secret() {
 				</a>
 			</Button>
 			{isSecretShown && (
-				<div className='mt-5 block h-[400px] w-full overflow-hidden'>
+				<div className='mt-5 block max-h-[400px] w-full overflow-hidden rounded-md'>
 					<img className='w-full object-cover object-center' src={gifUrl} />
 				</div>
 			)}

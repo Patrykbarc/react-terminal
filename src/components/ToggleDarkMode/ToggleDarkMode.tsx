@@ -15,12 +15,12 @@ export function ToggleDarkMode() {
 
 	return (
 		<div
-			className='absolute m-5 cursor-pointer transition-transform hover:scale-110'
+			className='absolute bottom-0 right-0 m-5 cursor-pointer rounded-full p-3 drop-shadow-md transition-transform hover:scale-110'
 			onClick={() => setDarkMode(!darkMode)}>
 			{darkMode ? (
-				<SunIcon className='size-12 text-neutral-800' />
+				<SunIcon className='size-12 text-neutral-100' />
 			) : (
-				<MoonIcon className='size-12 text-neutral-800' />
+				<MoonIcon className='size-12 text-neutral-100' />
 			)}
 		</div>
 	)

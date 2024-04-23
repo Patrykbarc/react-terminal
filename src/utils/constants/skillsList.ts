@@ -21,7 +21,7 @@ export const skills = [
 	},
 	{
 		technology: 'PHP',
-		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-plain.svg',
+		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg',
 		alt: 'PHP logo',
 	},
 	{
@@ -56,7 +56,7 @@ export const skills = [
 	},
 	{
 		technology: 'Adobe Photoshop',
-		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg',
+		icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg',
 		alt: 'Adobe Photoshop logo',
 	},
 	{

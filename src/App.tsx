@@ -15,8 +15,8 @@ function App() {
 			<MobileDeviceNotification />
 			<Notification isNotificationActive={isNotificationActive} />
 
-			<div className='flex h-screen items-start justify-center pt-24 text-neutral-800 md:items-center md:pt-0'>
-				<div className='scale-125'>
+			<div className='flex h-screen items-start justify-center text-neutral-800 md:items-center'>
+				<div className='scale-125 pt-36 md:pt-0'>
 					<TerminalHeader />
 					<NotificationContext.Provider value={{ isNotificationActive, setIsNotificationActive }}>
 						<TerminalContainer />

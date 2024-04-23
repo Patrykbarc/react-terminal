@@ -9,7 +9,7 @@ export function Github({ setInput }: SetStateProps<string>) {
 				<img
 					src='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg'
 					alt='Github logo'
-					className='me-3 size-6 invert'
+					className='me-3 size-6'
 				/>
 				<a href='https://github.com/Patrykbarc' target='_blank' className='underline'>
 					My Github page
