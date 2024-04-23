@@ -21,6 +21,7 @@ export function useMessageScroll({
 		const messagesEndRefCurrent = messagesEndRef.current
 		const sendMessageButtonRefCurrent = sendMessageButtonRef.current
 		const scrollToTopRefCurrent = scrollToTopRef.current
+		const inputCurrent = inputRef.current
 
 		const setupEventListeners = () => {
 			messagesEndRefCurrent?.addEventListener('scroll', checkOverflowAndPosition)
@@ -52,7 +53,11 @@ export function useMessageScroll({
 
 		const focusInput = () => {
 			setTimeout(() => {
-				inputRef.current?.focus()
+				if (inputCurrent) {
+					inputCurrent.focus()
+					const length = inputCurrent.value.length
+					inputCurrent.setSelectionRange(length, length)
+				}
 			}, 100)
 		}
 
