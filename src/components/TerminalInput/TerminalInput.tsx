@@ -19,6 +19,12 @@ export function TerminalInput({
 	refs: { inputRef, sendMessageButtonRef },
 	states: { input, setInput, setChat },
 }: TerminalInputProps) {
+	const inputTrimLength = input.trim().length
+
+	const buttonCursorStyle = inputTrimLength > 0 ? 'cursor-pointer' : 'cursor-default'
+	const sendMessageIconStyle = inputTrimLength > 0 ? 'text-sky-600' : 'text-gray-400'
+	const isButtonDisabled = inputTrimLength === 0 ?? true
+
 	return (
 		<div className='flex items-center border-t pl-3'>
 			<input
@@ -32,12 +38,10 @@ export function TerminalInput({
 			/>
 			<button
 				ref={sendMessageButtonRef}
-				className={`group flex h-full items-center overflow-hidden border-l px-5 ${input.trim().length > 0 ? 'cursor-pointer' : 'cursor-default'}`}
+				className={`group flex h-full items-center overflow-hidden border-l px-5 ${buttonCursorStyle}`}
 				onClick={event => handleSetChat({ event, useStates: { input, setInput, setChat } })}
-				disabled={input.trim().length === 0 ?? true}>
-				<PaperAirplaneIcon
-					className={`size-6 ${input.trim().length > 0 ? 'text-sky-600' : 'text-gray-400'}`}
-				/>
+				disabled={isButtonDisabled}>
+				<PaperAirplaneIcon className={`size-6 ${sendMessageIconStyle}`} />
 			</button>
 		</div>
 	)

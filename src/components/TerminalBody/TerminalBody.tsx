@@ -2,10 +2,9 @@ import { useRef, useState } from 'react'
 import { ChatItem, OverflowingChild } from '../../utils/interfaces'
 import { InitialMessage } from '../Outputs/InitialMessage'
 import { TerminalBodyWrapper } from '../TerminalBodyWrapper/TerminalBodyWrapper'
-import { HorizontalRuler } from '../HorizontalRuler/HorizontalRuler'
 import { useMessageScroll } from '../../utils/hooks/useMessageScroll'
-import { ScrollToTop } from '../ScrollToTop/ScrollToTop'
 import { TerminalInput } from '../TerminalInput/TerminalInput'
+import { TerminalChat } from '../TerminalChat/TerminalChat'
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
@@ -26,22 +25,11 @@ export function TerminalContainer() {
 
 	return (
 		<TerminalBodyWrapper>
-			<div
-				ref={messagesEndRef}
-				className='flex h-full flex-col gap-1 overflow-y-scroll break-words px-3 pb-4 pt-2'>
-				{isChildOverflowing && <ScrollToTop id={isChildOverflowing.id} />}
-
-				{chat.map((item, index) => {
-					const lastIndex = chat.length - 1
-					const isLastIndex = index === lastIndex
-					return (
-						<div key={item.id} id={String(item.id)}>
-							{item.content}
-							{!isLastIndex && <HorizontalRuler index={index} />}
-						</div>
-					)
-				})}
-			</div>
+			<TerminalChat
+				chat={chat}
+				messagesEndRef={messagesEndRef}
+				isChildOverflowing={isChildOverflowing}
+			/>
 			<TerminalInput
 				refs={{ inputRef, sendMessageButtonRef }}
 				states={{ input, setInput, setChat }}
