@@ -4,12 +4,14 @@ import { MobileDeviceNotification } from './components/MobileDeviceNotification/
 import { TerminalContainer } from './components/TerminalBody/TerminalBody'
 import { TerminalHeader } from './components/TerminalHeader/TerminalHeader'
 import { NotificationContext } from './utils/contexts/NotificationContext'
+import { ToggleDarkMode } from './components/ToggleDarkMode/ToggleDarkMode'
 
 function App() {
 	const [isNotificationActive, setIsNotificationActive] = useState<boolean>(false)
 
 	return (
 		<>
+			<ToggleDarkMode />
 			<MobileDeviceNotification />
 			<Notification isNotificationActive={isNotificationActive} />
 
