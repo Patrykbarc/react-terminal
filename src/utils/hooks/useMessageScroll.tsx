@@ -8,61 +8,64 @@ interface UseMessageScrollParams {
 		messagesEndRef: RefObject<HTMLDivElement>
 		inputRef: RefObject<HTMLInputElement>
 		sendMessageButtonRef: RefObject<HTMLButtonElement>
+		scrollToTopRef: RefObject<HTMLAnchorElement>
 	}
 }
 
 export function useMessageScroll({
 	chat,
 	setIsChildOverflowing,
-	refs: { messagesEndRef, inputRef, sendMessageButtonRef },
+	refs: { messagesEndRef, inputRef, sendMessageButtonRef, scrollToTopRef },
 }: UseMessageScrollParams) {
 	useEffect(() => {
-		if (messagesEndRef !== null && inputRef !== null) {
-			const messagesRef = messagesEndRef.current
-			const sendMessageRef = sendMessageButtonRef.current
+		const messagesEndRefCurrent = messagesEndRef.current
+		const sendMessageButtonRefCurrent = sendMessageButtonRef.current
+		const scrollToTopRefCurrent = scrollToTopRef.current
 
-			function handleScrollToBottom() {
-				if (messagesRef) {
-					messagesRef.scrollTop = messagesRef?.scrollHeight
-				}
-			}
-
-			function handleSetInputFocus() {
-				const refs = [messagesRef, sendMessageRef]
-
-				refs.forEach(ref => {
-					ref?.addEventListener('click', () => {
-						inputRef.current !== null && inputRef.current.focus()
-					})
-				})
-			}
-
-			function handleScrollToTop() {
-				const isChildOverflowing = checkDivHeight()
-
-				if (isChildOverflowing !== undefined) {
-					setIsChildOverflowing(isChildOverflowing)
-				}
-			}
-
-			function checkDivHeight() {
-				if (messagesRef?.lastChild !== null && messagesRef !== null) {
-					const lastChild = messagesRef?.lastChild as HTMLElement
-
-					const lastChildHeight = lastChild?.clientHeight
-					const divHeight = messagesRef?.clientHeight
-
-					if (lastChildHeight > divHeight) {
-						return { isOverflowing: true, id: lastChild.id }
-					} else {
-						return { isOverflowing: false, id: '' }
-					}
-				}
-			}
-
-			handleScrollToBottom()
-			handleSetInputFocus()
-			handleScrollToTop()
+		const setupEventListeners = () => {
+			messagesEndRefCurrent?.addEventListener('scroll', checkOverflowAndPosition)
+			messagesEndRefCurrent?.addEventListener('click', focusInput)
+			sendMessageButtonRefCurrent?.addEventListener('click', focusInput)
+			scrollToTopRefCurrent?.addEventListener('click', focusInput)
 		}
-	}, [chat, messagesEndRef, inputRef, setIsChildOverflowing, sendMessageButtonRef])
+
+		const removeEventListeners = () => {
+			messagesEndRefCurrent?.removeEventListener('scroll', checkOverflowAndPosition)
+			messagesEndRefCurrent?.removeEventListener('click', focusInput)
+			sendMessageButtonRefCurrent?.removeEventListener('click', focusInput)
+			scrollToTopRefCurrent?.removeEventListener('click', focusInput)
+		}
+
+		const checkOverflowAndPosition = () => {
+			const lastChild = messagesEndRefCurrent?.lastChild as HTMLElement
+			if (lastChild && messagesEndRefCurrent) {
+				const isOverflowing = lastChild.clientHeight > messagesEndRefCurrent.clientHeight
+				const isScrolledToBottom =
+					messagesEndRefCurrent.scrollTop + messagesEndRefCurrent.clientHeight >=
+					lastChild.offsetTop + lastChild.clientHeight
+
+				setIsChildOverflowing(
+					isOverflowing && isScrolledToBottom ? { isOverflowing: true, id: lastChild.id } : null,
+				)
+			}
+		}
+
+		const focusInput = () => {
+			setTimeout(() => {
+				inputRef.current?.focus()
+			}, 100)
+		}
+
+		const scrollToBottom = () => {
+			if (messagesEndRefCurrent) {
+				messagesEndRefCurrent.scrollTop = messagesEndRefCurrent.scrollHeight
+			}
+		}
+
+		setupEventListeners()
+		checkOverflowAndPosition()
+		scrollToBottom()
+
+		return removeEventListeners
+	}, [chat, messagesEndRef, inputRef, setIsChildOverflowing, sendMessageButtonRef, scrollToTopRef])
 }
