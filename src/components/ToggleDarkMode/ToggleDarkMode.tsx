@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useLocalStorage } from '../../utils/hooks/useLocalStorage'
 
 export function ToggleDarkMode() {
-	const [darkMode, setDarkMode] = useState(false)
+	const [darkMode, setDarkMode] = useLocalStorage('darkMode', false)
 
 	useEffect(() => {
 		if (darkMode) {
