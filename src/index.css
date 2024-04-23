@@ -16,6 +16,8 @@ body {
 	font-style: normal;
 	font-variation-settings: 'slnt' 0;
 
+	max-height: 100dvh;
+
 	background-image: url('./assets/body-background.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
