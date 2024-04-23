@@ -3,20 +3,23 @@ import { ChatItem, OverflowingChild } from '../interfaces'
 
 interface UseMessageScrollParams {
 	chat: ChatItem[]
-	messagesEndRef: RefObject<HTMLDivElement>
-	inputRef: RefObject<HTMLInputElement>
 	setIsChildOverflowing: Dispatch<SetStateAction<OverflowingChild | null>>
+	refs: {
+		messagesEndRef: RefObject<HTMLDivElement>
+		inputRef: RefObject<HTMLInputElement>
+		sendMessageButtonRef: RefObject<HTMLButtonElement>
+	}
 }
 
 export function useMessageScroll({
 	chat,
-	messagesEndRef,
-	inputRef,
 	setIsChildOverflowing,
+	refs: { messagesEndRef, inputRef, sendMessageButtonRef },
 }: UseMessageScrollParams) {
 	useEffect(() => {
 		if (messagesEndRef !== null && inputRef !== null) {
 			const messagesRef = messagesEndRef.current
+			const sendMessageRef = sendMessageButtonRef.current
 
 			function handleScrollToBottom() {
 				if (messagesRef) {
@@ -25,11 +28,13 @@ export function useMessageScroll({
 			}
 
 			function handleSetInputFocus() {
-				if (messagesRef) {
-					messagesRef.addEventListener('click', () => {
+				const refs = [messagesRef, sendMessageRef]
+
+				refs.forEach(ref => {
+					ref?.addEventListener('click', () => {
 						inputRef.current !== null && inputRef.current.focus()
 					})
-				}
+				})
 			}
 
 			function handleScrollToTop() {

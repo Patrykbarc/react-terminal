@@ -6,6 +6,7 @@ import { TerminalBodyWrapper } from '../TerminalBodyWrapper/TerminalBodyWrapper'
 import { HorizontalRuler } from '../HorizontalRuler/HorizontalRuler'
 import { useMessageScroll } from '../../utils/hooks/useMessageScroll'
 import { ScrollToTop } from '../ScrollToTop/ScrollToTop'
+import { PaperAirplaneIcon } from '@heroicons/react/16/solid'
 
 export function TerminalContainer() {
 	const [input, setInput] = useState('')
@@ -16,9 +17,10 @@ export function TerminalContainer() {
 
 	const messagesEndRef = useRef<HTMLDivElement>(null)
 	const inputRef = useRef<HTMLInputElement>(null)
+	const sendMessageButtonRef = useRef<HTMLButtonElement>(null)
 
-	useMessageScroll({ messagesEndRef, inputRef, chat, setIsChildOverflowing })
-	console.log(isChildOverflowing)
+	useMessageScroll({ chat, setIsChildOverflowing, refs: { messagesEndRef, inputRef, sendMessageButtonRef } })
+
 	return (
 		<TerminalBodyWrapper>
 			<div
@@ -37,15 +39,25 @@ export function TerminalContainer() {
 					)
 				})}
 			</div>
-			<input
-				ref={inputRef}
-				placeholder='Type command'
-				className={`bottom-0 z-50 w-full border-t border-gray-200 bg-transparent px-3 py-2 focus-visible:outline-none`}
-				type='text'
-				value={input}
-				onChange={e => setInput(e.target.value)}
-				onKeyUp={event => handleSetChat({ event, useStates: { input, setInput, setChat } })}
-			/>
+			<div className='flex items-center border-t pl-3'>
+				<input
+					ref={inputRef}
+					placeholder='Type command'
+					className={`bottom-0 z-50 w-full bg-transparent py-2 focus-visible:outline-none`}
+					type='text'
+					value={input}
+					onChange={e => setInput(e.target.value)}
+					onKeyUp={event => handleSetChat({ event, useStates: { input, setInput, setChat } })}
+				/>
+				<button
+					ref={sendMessageButtonRef}
+					className={`flex h-full items-center border-l px-5 ${input.trim().length > 0 ? 'cursor-pointer' : 'cursor-default'}`}
+					onClick={event => handleSetChat({ event, useStates: { input, setInput, setChat } })}>
+					<PaperAirplaneIcon
+						className={`size-5 ${input.trim().length > 0 ? 'text-sky-600' : 'text-gray-400'}`}
+					/>
+				</button>
+			</div>
 		</TerminalBodyWrapper>
 	)
 }
