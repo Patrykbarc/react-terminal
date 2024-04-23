@@ -20,7 +20,7 @@ export function Linkedin({ setInput }: SetStateProps<string>) {
 			</div>
 			<ButtonsWrapper>
 				Suggested command:
-				<Button onClick={() => setInput('secret')}>secret</Button>
+				<Button onClick={() => setInput('secret')}>secret 🤫</Button>
 			</ButtonsWrapper>
 		</div>
 	)
