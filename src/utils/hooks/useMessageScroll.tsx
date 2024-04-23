@@ -64,5 +64,5 @@ export function useMessageScroll({
 			handleSetInputFocus()
 			handleScrollToTop()
 		}
-	}, [chat, messagesEndRef, inputRef, setIsChildOverflowing])
+	}, [chat, messagesEndRef, inputRef, setIsChildOverflowing, sendMessageButtonRef])
 }
