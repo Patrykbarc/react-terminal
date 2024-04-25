@@ -3,9 +3,9 @@ import { ProjectsList } from '../interfaces'
 
 export const projectsList: ProjectsList[] = [
 	{
-		name: 'Password Generator',
+		name: 'SecureKeyGen',
 		gitUrl: 'https://github.com/Patrykbarc/ts-password-generator',
-		deploy: 'https://react-ts-password-generator.netlify.app/',
+		deploy: 'https://securekeygen.netlify.app/',
 		description:
 			'The Password Generator App is a simple React-based powered with TypeScript application that allows users to generate secure passwords based on their preferences. The application provides a user-friendly interface to customize password length and include or exclude different character types such as letters, capital letters, numbers, and special characters.',
 		techs: '',
