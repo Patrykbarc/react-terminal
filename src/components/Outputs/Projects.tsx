@@ -13,12 +13,13 @@ export function Projects({ setInput }: SetStateProps<string>) {
 						<li
 							className='mb-3 border-b border-gray-200 border-opacity-50 pb-3 last-of-type:border-none'
 							key={name}>
-							<div className='flex flex-col'>
-								<div className='mb-3 flex flex-col'>
+							<div className='flex flex-col gap-3'>
+								<div className='flex flex-col gap-3'>
 									<p className='text-xl font-bold'>{name}</p>
-									<p>{description}</p>
+									{description && <p>{description}</p>}
 								</div>
-								{techs && <p>{techs}</p>}
+								{techs && <small className='font-semibold'>{techs}</small>}
+
 								<div className='flex gap-1.5'>
 									{gitUrl && (
 										<Button>

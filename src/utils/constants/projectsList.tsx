@@ -7,22 +7,22 @@ export const projectsList: ProjectsList[] = [
 		gitUrl: 'https://github.com/Patrykbarc/ts-password-generator',
 		deploy: 'https://securekeygen.netlify.app/',
 		description:
-			'The Password Generator App is a simple React-based powered with TypeScript application that allows users to generate secure passwords based on their preferences. The application provides a user-friendly interface to customize password length and include or exclude different character types such as letters, capital letters, numbers, and special characters.',
-		techs: '',
+			'The SecureKeyGen is a simple React-based powered with TypeScript application that allows users to generate secure passwords based on their preferences. The application provides a user-friendly interface to customize password length and include or exclude different character types such as letters, capital letters, numbers, and special characters.',
+		techs: 'React | TypeScript | Tailwind',
 	},
 	{
 		name: 'Piotr Kukla Photo',
 		deploy: 'http://pkuklaphoto.pl/',
 		description:
 			"A professional photographer's personal website. The site provides a public content management panel and includes an administrator management panel.",
-		techs: '',
+		techs: 'PHP | MySql | JavScript | Bootstrap',
 	},
 	{
 		name: 'The Old Sailor Barber',
 		gitUrl: 'https://github.com/Patrykbarc/react-old-sailor',
 		deploy: 'https://theoldsailorbarber.netlify.app/',
 		description: '',
-		techs: '',
+		techs: 'React | Tailwind',
 	},
 	{
 		name: 'Artist portfolio',
@@ -40,13 +40,13 @@ export const projectsList: ProjectsList[] = [
 				</Button>
 			</span>
 		),
-		techs: '',
+		techs: 'React | Tailwind',
 	},
 	{
 		name: 'Calculator App',
 		gitUrl: 'https://github.com/Patrykbarc/react-calculator',
 		deploy: 'https://react-calculator-patrykbarc.netlify.app/',
 		description: '',
-		techs: '',
+		techs: 'React',
 	},
 ]
