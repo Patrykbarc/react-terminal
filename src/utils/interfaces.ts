@@ -16,6 +16,7 @@ export interface SetStateProps<T> {
 
 export interface ProjectsList {
 	name: string
+	status?: 'development' | 'finished'
 	gitUrl?: string
 	deploy: string
 	description?: string | ReactNode

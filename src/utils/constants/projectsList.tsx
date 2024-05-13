@@ -4,6 +4,7 @@ import { ProjectsList } from '../interfaces'
 export const projectsList: ProjectsList[] = [
 	{
 		name: 'SecureKeyGen',
+		status: 'finished',
 		gitUrl: 'https://github.com/Patrykbarc/ts-password-generator',
 		deploy: 'https://securekeygen.netlify.app/',
 		description:
@@ -12,6 +13,7 @@ export const projectsList: ProjectsList[] = [
 	},
 	{
 		name: 'Piotr Kukla Photo',
+		status: 'finished',
 		deploy: 'http://pkuklaphoto.pl/',
 		description:
 			"A professional photographer's personal website. The site provides a public content management panel and includes an administrator management panel.",
@@ -19,6 +21,7 @@ export const projectsList: ProjectsList[] = [
 	},
 	{
 		name: 'The Old Sailor Barber',
+		status: 'development',
 		gitUrl: 'https://github.com/Patrykbarc/react-old-sailor',
 		deploy: 'https://theoldsailorbarber.netlify.app/',
 		description: '',
@@ -26,6 +29,7 @@ export const projectsList: ProjectsList[] = [
 	},
 	{
 		name: 'Artist portfolio',
+		status: 'development',
 		gitUrl: 'https://github.com/Patrykbarc/react-artisans',
 		deploy: 'https://main--react-ts-artisans.netlify.app/',
 		description: (

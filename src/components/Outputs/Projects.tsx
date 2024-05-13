@@ -3,21 +3,27 @@ import { Button } from '../Button/Button'
 import { ProjectsList, SetStateProps } from '../../utils/interfaces'
 import { projectsList } from '../../utils/constants/projectsList'
 import { ButtonsWrapper } from '../ButtonsWrapper/ButtonsWrapper'
+import { Badge } from '../Badge/Badge'
 
 export function Projects({ setInput }: SetStateProps<string>) {
 	return (
 		<>
 			<ol>
-				{projectsList.map(({ name, description, gitUrl, techs, deploy }: ProjectsList) => {
+				{projectsList.map(({ name, status, description, gitUrl, techs, deploy }: ProjectsList) => {
 					return (
 						<li
 							className='mb-3 border-b border-gray-200 border-opacity-50 pb-3 last-of-type:border-none'
 							key={name}>
 							<div className='flex flex-col gap-3'>
-								<div className='flex flex-col gap-3'>
+								<div className='flex gap-2'>
 									<p className='text-xl font-bold'>{name}</p>
-									{description && <p>{description}</p>}
+									{status === 'development' && (
+											<Badge size='sm' variant='outline'>
+												In progress
+											</Badge>
+									)}
 								</div>
+								{description && <p>{description}</p>}
 								{techs && <small className='font-semibold'>{techs}</small>}
 
 								<div className='flex gap-1.5'>
