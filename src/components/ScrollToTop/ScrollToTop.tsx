@@ -15,7 +15,7 @@ export function ScrollToTop({
   return (
     <a
       ref={scrollToTopRef}
-      href={`#${id}` ?? ''}
+      href={`#${id}`}
       className={`absolute bottom-0 right-0 mb-11 mr-6 transition-opacity ${className}`}
     >
       <ArrowUpCircleIcon className="size-8 text-neutral-600 opacity-70 transition-transform hover:scale-105 hover:opacity-100" />
