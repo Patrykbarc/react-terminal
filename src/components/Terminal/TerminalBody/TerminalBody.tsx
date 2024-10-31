@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react'
-import { useMessageScroll } from '../../utils/hooks/useMessageScroll'
-import { ChatItem, OverflowingChild } from '../../utils/interfaces'
-import { InitialMessage } from '../Outputs/InitialMessage'
-import { ScrollToTop } from '../ScrollToTop/ScrollToTop'
+import { useMessageScroll } from '../../../utils/hooks/useMessageScroll'
+import { ChatItem, OverflowingChild } from '../../../utils/types'
+import { InitialMessage } from '../../Outputs/InitialMessage'
+import { ScrollToTop } from '../../ScrollToTop/ScrollToTop'
 import { TerminalBodyWrapper } from '../TerminalBodyWrapper/TerminalBodyWrapper'
 import { TerminalChat } from '../TerminalChat/TerminalChat'
 import { TerminalInput } from '../TerminalInput/TerminalInput'
 
-export function TerminalContainer() {
+export function TerminalBody() {
   const [input, setInput] = useState('')
   const [chat, setChat] = useState<ChatItem[]>([
     { id: Date.now(), content: <InitialMessage setInput={setInput} /> }

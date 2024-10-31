@@ -36,7 +36,7 @@ body {
   }
 }
 
-.greyGradient {
+.grey-gradient {
   background: linear-gradient(
     180deg,
     rgba(243, 243, 243, 1) 0%,
@@ -70,7 +70,7 @@ body {
     mix-blend-mode: darken;
   }
 
-  & .greyGradient {
+  & .grey-gradient {
     background: linear-gradient(
       180deg,
       rgba(43, 43, 43, 1) 0%,

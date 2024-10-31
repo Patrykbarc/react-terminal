@@ -1,5 +1,5 @@
 import { Dispatch, RefObject, SetStateAction, useEffect } from 'react'
-import { ChatItem, OverflowingChild } from '../interfaces'
+import { ChatItem, OverflowingChild } from '../types'
 
 interface UseMessageScrollParams {
   chat: ChatItem[]

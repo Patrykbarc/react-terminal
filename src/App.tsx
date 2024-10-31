@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { MobileDeviceNotification } from './components/MobileDeviceNotification/MobileDeviceNotification'
 import { Notification } from './components/Notification/Notification'
-import { TerminalContainer } from './components/TerminalBody/TerminalBody'
-import { TerminalHeader } from './components/TerminalHeader/TerminalHeader'
+import { TerminalBody } from './components/Terminal/TerminalBody/TerminalBody'
+import { TerminalHeader } from './components/Terminal/TerminalHeader/TerminalHeader'
 import { ToggleDarkMode } from './components/ToggleDarkMode/ToggleDarkMode'
 import { NotificationContext } from './utils/contexts/NotificationContext'
 
@@ -22,7 +22,7 @@ function App() {
           <NotificationContext.Provider
             value={{ isNotificationActive, setIsNotificationActive }}
           >
-            <TerminalContainer />
+            <TerminalBody />
           </NotificationContext.Provider>
         </div>
       </div>

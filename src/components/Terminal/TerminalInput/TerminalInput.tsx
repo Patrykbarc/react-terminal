@@ -1,7 +1,7 @@
 import { PaperAirplaneIcon } from '@heroicons/react/16/solid'
 import { Dispatch, RefObject, SetStateAction } from 'react'
-import { handleSetChat } from '../../utils/functions/handleSetChat'
-import { ChatItem } from '../../utils/interfaces'
+import { handleSetChat } from '../../../utils/functions/handleSetChat'
+import { ChatItem } from '../../../utils/types'
 
 interface TerminalInputProps {
   refs: {

@@ -1,4 +1,7 @@
-import { Commands } from '../interfaces'
+type Commands = {
+  cmd: string
+  description: string
+}
 
 export const commandsListArray: string[] = [
   'list',

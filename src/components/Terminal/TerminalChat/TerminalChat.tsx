@@ -1,6 +1,6 @@
 import { ReactNode, RefObject } from 'react'
-import { ChatItem } from '../../utils/interfaces'
-import { HorizontalRuler } from '../HorizontalRuler/HorizontalRuler'
+import { ChatItem } from '../../../utils/types'
+import { HorizontalRuler } from '../../HorizontalRuler/HorizontalRuler'
 
 interface TerminalChatProps {
   chat: ChatItem[]

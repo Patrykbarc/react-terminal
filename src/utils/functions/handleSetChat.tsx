@@ -1,6 +1,6 @@
 import { Dispatch, KeyboardEvent, MouseEvent, SetStateAction } from 'react'
 import { CommandBadge } from '../../components/CommandBadge/CommandBadge'
-import { ChatItem } from '../interfaces'
+import { ChatItem } from '../types'
 import { handleCommandResponse } from './handleCommandResponse'
 
 interface HandleSetChat {

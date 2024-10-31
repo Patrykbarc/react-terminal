@@ -1,5 +1,5 @@
 import { getActualTime } from '../../utils/functions/getDates'
-import { SetStateProps } from '../../utils/interfaces'
+import { SetStateProps } from '../../utils/types'
 import { ActualTime } from '../ActualTime/ActualTime'
 import { Button } from '../Button/Button'
 

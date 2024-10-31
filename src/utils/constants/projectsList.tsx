@@ -1,5 +1,14 @@
+import { ReactNode } from 'react'
 import { Button } from '../../components/Button/Button'
-import { ProjectsList } from '../interfaces'
+
+export type ProjectsList = {
+  name: string
+  status?: 'development' | 'finished'
+  gitUrl?: string
+  deploy: string
+  description?: string | ReactNode
+  techs: string | ReactNode
+}
 
 export const projectsList: ProjectsList[] = [
   {

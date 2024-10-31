@@ -1,5 +1,5 @@
 import { commandsList } from '../../utils/constants/commandsList'
-import { SetStateProps } from '../../utils/interfaces'
+import { SetStateProps } from '../../utils/types'
 import { Button } from '../Button/Button'
 import { ButtonsWrapper } from '../ButtonsWrapper/ButtonsWrapper'
 

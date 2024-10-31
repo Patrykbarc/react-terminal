@@ -1,5 +1,5 @@
 import { MouseEvent, useContext, useEffect } from 'react'
-import { SetStateProps } from '../../utils/interfaces'
+import { SetStateProps } from '../../utils/types'
 import { Button } from '../Button/Button'
 import { ButtonsWrapper } from '../ButtonsWrapper/ButtonsWrapper'
 

@@ -9,11 +9,11 @@ import { Github } from '../../components/Outputs/Github'
 import { Help } from '../../components/Outputs/Help'
 import { Linkedin } from '../../components/Outputs/Linkedin'
 import { List } from '../../components/Outputs/List'
-import { Projects } from '../../components/Outputs/Projects'
+import { Projects } from '../../components/Outputs/Projects/Projects'
 import { Secret } from '../../components/Outputs/Secret'
 import { Skills } from '../../components/Outputs/Skills'
 import { commandsListArray } from '../constants/commandsList'
-import { ChatItem } from '../interfaces'
+import { ChatItem } from '../types'
 
 interface CommandResponse {
   formattedInput: string
