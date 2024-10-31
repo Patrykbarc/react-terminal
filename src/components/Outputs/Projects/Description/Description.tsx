@@ -14,7 +14,9 @@ export function Description({ description, image }: DescriptionProps) {
           {image &&
             image.map((i) => (
               <picture key={i}>
-                <img src={i} />
+                <a href={i} target="_blank">
+                  <img src={i} />
+                </a>
               </picture>
             ))}
         </div>

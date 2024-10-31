@@ -40,11 +40,12 @@ export const projectsList: ProjectsList[] = [
     techs: 'Next.js | Shopify | Tailwind | ShadCn'
   },
   {
-    name: 'Galicja',
+    name: 'Galicja Dashboard',
     status: 'finished',
     description:
-      'The "Old Sailor Barber" project is a showcase website for a barber shop, featuring an integrated online store where users can explore products, though purchases are currently unavailable. The site provides information about services, the team, and location, all presented with a stylish design, smooth animations, and optimized performance',
-    techs: 'Next.js | Shopify | Tailwind | ShadCn',
+      'The "Galicja" is a Dasbhoard project for monitoring task progress and better managing operational processes',
+    techs:
+      'Next.js | TypeScript | Redux | React Hook Form | Zod | Tailwind | shadcn | Playwright | Jest',
     image: [GALICJA_DASHBOARD, GALICJA_LOGIN_PAGE]
   }
 ]
