@@ -22,7 +22,8 @@ export function Projects({ setInput }: SetStateProps<string>) {
             description,
             gitUrl,
             techs,
-            deploy
+            deploy,
+            image
           }: ProjectsList) => {
             return (
               <li
@@ -31,13 +32,16 @@ export function Projects({ setInput }: SetStateProps<string>) {
               >
                 <div className="flex flex-col gap-3">
                   <Status name={name} status={status} />
-                  <Description description={description} />
+                  <Description description={description} image={image} />
                   <Techs techs={techs} />
 
-                  <div className="flex gap-1.5">
-                    <GitUrl gitUrl={gitUrl} />
-                    <DeployUrl name={name} url={deploy} />
-                  </div>
+                  {gitUrl ||
+                    (deploy && (
+                      <div className="flex gap-1.5">
+                        <GitUrl gitUrl={gitUrl} />
+                        <DeployUrl url={deploy} />
+                      </div>
+                    ))}
                 </div>
               </li>
             )

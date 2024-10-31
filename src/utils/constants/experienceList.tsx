@@ -26,7 +26,7 @@ export const experience: Experience[] = [
   },
   {
     company: 'modern forms',
-    position: 'full-stack developer',
+    position: 'fullstack developer',
     timespan: '04.2023 - current',
     text: (
       <>

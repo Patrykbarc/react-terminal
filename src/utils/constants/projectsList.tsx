@@ -1,13 +1,15 @@
 import { ReactNode } from 'react'
-import { Button } from '../../components/Button/Button'
+import GALICJA_DASHBOARD from '/public/screenshots/dashboard.jpg'
+import GALICJA_LOGIN_PAGE from '/public/screenshots/login-page.png'
 
 export type ProjectsList = {
   name: string
-  status?: 'development' | 'finished'
-  gitUrl?: string
-  deploy: string
-  description?: string | ReactNode
+  status: 'development' | 'finished'
+  description: string | ReactNode
   techs: string | ReactNode
+  gitUrl?: string
+  deploy?: string
+  image?: string[]
 }
 
 export const projectsList: ProjectsList[] = [
@@ -30,37 +32,19 @@ export const projectsList: ProjectsList[] = [
   },
   {
     name: 'The Old Sailor Barber',
-    status: 'development',
-    gitUrl: 'https://github.com/Patrykbarc/react-old-sailor',
-    deploy: 'https://theoldsailorbarber.netlify.app/',
-    description: '',
-    techs: 'React | Tailwind'
+    status: 'finished',
+    gitUrl: 'https://github.com/Patrykbarc/old-sailor-ts',
+    deploy: 'https://old-sailor-barber.netlify.app/',
+    description:
+      'The "Old Sailor Barber" project is a showcase website for a barber shop, featuring an integrated online store where users can explore products, though purchases are currently unavailable. The site provides information about services, the team, and location, all presented with a stylish design, smooth animations, and optimized performance',
+    techs: 'Next.js | Shopify | Tailwind | ShadCn'
   },
   {
-    name: 'Artist portfolio',
-    status: 'development',
-    gitUrl: 'https://github.com/Patrykbarc/react-artisans',
-    deploy: 'https://main--react-ts-artisans.netlify.app/',
-    description: (
-      <span>
-        A site created for practice and fun. Design inspired by{' '}
-        <Button variant="link">
-          <a
-            href="https://dribbble.com/shots/18627486-Artisans-Classic-Art-Collection-Website"
-            target="_blank"
-          >
-            Artisans
-          </a>
-        </Button>
-      </span>
-    ),
-    techs: 'React | Tailwind'
-  },
-  {
-    name: 'Calculator App',
-    gitUrl: 'https://github.com/Patrykbarc/react-calculator',
-    deploy: 'https://react-calculator-patrykbarc.netlify.app/',
-    description: '',
-    techs: 'React'
+    name: 'Galicja',
+    status: 'finished',
+    description:
+      'The "Old Sailor Barber" project is a showcase website for a barber shop, featuring an integrated online store where users can explore products, though purchases are currently unavailable. The site provides information about services, the team, and location, all presented with a stylish design, smooth animations, and optimized performance',
+    techs: 'Next.js | Shopify | Tailwind | ShadCn',
+    image: [GALICJA_DASHBOARD, GALICJA_LOGIN_PAGE]
   }
 ]
