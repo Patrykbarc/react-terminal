@@ -10,7 +10,7 @@ export function Description({ description, image }: DescriptionProps) {
     description && (
       <div>
         <p>{description}</p>
-        <div className="mt-6 grid grid-cols-2">
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2">
           {image &&
             image.map((i) => (
               <picture key={i}>

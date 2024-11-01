@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import GALICJA_DASHBOARD from '/public/screenshots/dashboard.jpg'
-import GALICJA_LOGIN_PAGE from '/public/screenshots/login-page.png'
+import GALICJA_DASHBOARD from '/screenshots/dashboard.jpg'
+import GALICJA_LOGIN_PAGE from '/screenshots/login-page.png'
 
 export type ProjectsList = {
   name: string
