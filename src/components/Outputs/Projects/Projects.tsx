@@ -5,9 +5,8 @@ import {
 import { SetStateProps } from '../../../utils/types'
 import { Button } from '../../Button/Button'
 import { ButtonsWrapper } from '../../ButtonsWrapper/ButtonsWrapper'
+import { Badges } from './Badges/Badges'
 import { Description } from './Description/Description'
-import { DeployUrl } from './Links/DeployUrl'
-import { GitUrl } from './Links/GitUrl'
 import { Status } from './Status/Status'
 import { Techs } from './Techs/Techs'
 
@@ -34,14 +33,7 @@ export function Projects({ setInput }: SetStateProps<string>) {
                   <Status name={name} status={status} />
                   <Description description={description} image={image} />
                   <Techs techs={techs} />
-
-                  {gitUrl ||
-                    (deploy && (
-                      <div className="flex gap-1.5">
-                        <GitUrl gitUrl={gitUrl} />
-                        <DeployUrl url={deploy} />
-                      </div>
-                    ))}
+                  <Badges gitUrl={gitUrl} deploy={deploy} />
                 </div>
               </li>
             )
